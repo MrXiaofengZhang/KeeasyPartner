@@ -1,0 +1,69 @@
+//
+//  yuezhan.pch
+//  yuezhan123
+//
+//  Created by apples on 15/3/19.
+//  Copyright (c) 2015年 LV. All rights reserved.
+//
+
+
+#import "Global.h"
+#import "Connect.h"
+
+#import "LVDateSource.h"
+#import "DataService.h"
+#import "UIViewExt.h"
+#import "LVButton.h"
+#import "LVTableView.h"
+#import "LVTools.h"
+#import "Utility.h"//加密数据的
+#import "NSString+Time.h"//时间转换
+#import "UIButton+WebCache.h"
+#import "UIImageView+WebCache.h"
+#import "MJRefresh.h"
+#import "UIViewController+HUD.h"
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
+
+
+//log打印格式：（类名+行）
+//#ifdef DEBUG
+//#define NSLog(FORMAT, ...) fprintf(stderr,"[%s:%d行] %s\n\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+//#else
+//#define NSLog(FORMAT, ...) nil
+//#endif
+#if DEBUG
+#define debuglog(format, ...)   NSLog(format, __VA_ARGS__)
+#else
+#define debuglog(format, ...)
+#endif
+//EMChartUI
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+#define KNOTIFICATION_LOGINCHANGE @"loginStateChange"
+#define lightColor RGBACOLOR(180, 180, 180, 1)
+#define CHATVIEWBACKGROUNDCOLOR [UIColor colorWithRed:0.936 green:0.932 blue:0.907 alpha:1]
+//主线程
+#define __async_main__ dispatch_async(dispatch_get_main_queue()
+#define __async_opt__  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+#import "WCAlertView.h"
+#import "UIViewController+HUD.h"
+#import "UIViewController+DismissKeyboard.h"
+#import "NSString+Valid.h"
+#import "EaseMob.h"
+#import "MBProgressHUD+Add.h"
+
+#ifndef yuezhan123_yuezhan_pch
+#define yuezhan123_yuezhan_pch
+#endif
