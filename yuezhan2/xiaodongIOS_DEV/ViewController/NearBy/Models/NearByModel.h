@@ -64,6 +64,7 @@
 @property (nonatomic, strong)NSString * inviteStatus;
 @property (nonatomic, strong)NSString * face;
 @property (nonatomic, strong)NSString * status;
+@property (nonatomic, strong)NSString * followStatus;
 @property (assign)BOOL selected;
 @property (assign)NSInteger unreadMessageCount;//未读消息数
 
