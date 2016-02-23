@@ -48,7 +48,7 @@
     //yizhichaoyue#xiaodong
     NSLog(@"%@",apnsCertName);
     //easemob-demo#chatdemoui
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"yizhichaoyue#xiaodongup"
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"yizhichaoyue#xiaodong"
                                        apnsCertName:apnsCertName
                                         otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:NO]}];
     
