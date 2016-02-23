@@ -20,28 +20,32 @@
         _headImgView = [UIButton buttonWithType:UIButtonTypeCustom];
         _nickNameLb = [[UILabel alloc] init];
         _genderImg = [[UIImageView alloc] init];
-        _floorLb = [[UILabel alloc] init];
+        
         _contentLab = [[UILabel alloc] init];
         _timeLab = [[UILabel alloc] init];
         
         [self.contentView addSubview:_headImgView];
         [self.contentView addSubview:_nickNameLb];
         [self.contentView addSubview:_genderImg];
-        [self.contentView addSubview:_floorLb];
+        
         [self.contentView addSubview:_contentLab];
         //[self.contentView addSubview:_timeLab];
+        if(type !=WPCAppointCommentType){
+            _floorLb = [[UILabel alloc] init];
+            [self.contentView addSubview:_floorLb];
+            _morActionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            [_morActionBtn setImage:[UIImage imageNamed:@"moreBtn"] forState:UIControlStateNormal];
+            _morActionBtn.frame = CGRectMake(UISCREENWIDTH-45, 12.5, 15.0, 15.0);
+            _morActionBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            [self.contentView addSubview:_morActionBtn];
+            
+            _replyActionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            [_replyActionBtn setImage:[UIImage imageNamed:@"replyBtn"] forState:UIControlStateNormal];
+            _replyActionBtn.frame = CGRectMake(UISCREENWIDTH-75, 10, 20.0, 20.0);
+            _replyActionBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            [self.contentView addSubview:_replyActionBtn];
+        }
         
-        _morActionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_morActionBtn setImage:[UIImage imageNamed:@"moreBtn"] forState:UIControlStateNormal];
-        _morActionBtn.frame = CGRectMake(UISCREENWIDTH-45, 12.5, 15.0, 15.0);
-        _morActionBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.contentView addSubview:_morActionBtn];
-        
-        _replyActionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_replyActionBtn setImage:[UIImage imageNamed:@"replyBtn"] forState:UIControlStateNormal];
-        _replyActionBtn.frame = CGRectMake(UISCREENWIDTH-75, 10, 20.0, 20.0);
-        _replyActionBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.contentView addSubview:_replyActionBtn];
         self.line = [[UIImageView alloc] initWithFrame:CGRectMake(55.0, 0, BOUNDS.size.width*(711.0/750.0)-45.0, 0.5)];
         self.line.backgroundColor = [UIColor lightGrayColor];
         [self.contentView addSubview:self.line];
@@ -55,7 +59,7 @@
     //dic= @{@"iconPath":@"/upload/pic/business/personal/myLogo/20150625094724.jpg",@"userName":@"seven",@"info":@"怒发冲冠，凭阑处、潇潇雨歇。抬望眼、仰天长啸，壮怀激烈。三十功名尘与土，八千里路云和月。莫等闲，白了少年头，空悲切。靖康耻，犹未雪；臣子恨，何时灭。驾长车，踏破贺兰山缺。壮志饥餐胡虏肉，笑谈渴饮匈奴血。待从头、收拾旧山河，朝天阙。",};
     //头像按钮
     _headImgView.frame = CGRectMake(10, 10, 40, 40);
-    _headImgView.layer.cornerRadius = 20;
+    _headImgView.layer.cornerRadius = mygap;
     _headImgView.layer.masksToBounds = YES;
     [_headImgView sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,[LVTools mToString:[dic objectForKey:@"face"]]]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"plhor_2"]];
     
@@ -120,7 +124,7 @@
     //判断是否有图片
     if ([dic[@"commentImages"] count] > 0) {
         for (int i = 0; i < [dic[@"commentImages"] count]; i ++) {
-            WPCImageView *image = [[WPCImageView alloc] initWithFrame:CGRectMake(60+i*45, _contentLab.bottom, 40, 40)];
+            WPCImageView *image = [[WPCImageView alloc] initWithFrame:CGRectMake(60+i*85, _contentLab.bottom, 80, 80)];
             [image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,[LVTools mToString:[dic[@"commentImages"][i] valueForKey:@"path"]]]] placeholderImage:[UIImage imageNamed:@"applies_plo"]];
             image.tag = 400+i;
             image.contentMode = UIViewContentModeScaleAspectFill;
@@ -191,7 +195,7 @@
     //判断是否有图片
     if ([dic[@"commentShowList"] count] > 0) {
         for (int i = 0; i < [dic[@"commentShowList"] count]; i ++) {
-            WPCImageView *image = [[WPCImageView alloc] initWithFrame:CGRectMake(60+i*45, _contentLab.bottom, 40, 40)];
+            WPCImageView *image = [[WPCImageView alloc] initWithFrame:CGRectMake(60+i*85, _contentLab.bottom, 80, 80)];
             [image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,[LVTools mToString:[dic[@"commentShowList"][i] valueForKey:@"path"]]]] placeholderImage:[UIImage imageNamed:@"applies_plo"]];
             image.contentMode = UIViewContentModeScaleAspectFill;
             image.clipsToBounds = YES;

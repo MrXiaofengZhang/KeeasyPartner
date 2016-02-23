@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, WPCCommentType) {
-    WPCAppointCommentType = 0,
-    WPCVenueCommentType,
-    WPCSportCommentType,
+    WPCAppointCommentType = 0,//个人中心评论cell(没有楼，没按钮）
+    WPCVenueCommentType,//带五星评分的cell（运动场馆）
+    WPCSportCommentType,//比赛详情评论cell(楼 回复更多按钮)
 };
 @interface WPCCommentCell : UITableViewCell
 

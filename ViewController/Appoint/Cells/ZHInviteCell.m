@@ -65,7 +65,12 @@
 //        cell.statusLab.hidden = NO;
 //        cell.statusLab.text = @"(队长)";
 //    }
-
+    if ([[LVTools mToString:model.followStatus] isEqualToString:@"0"]) {
+        self.newfans.hidden = NO;
+    }
+    else{
+        self.newfans.hidden = YES;
+    }
     _hobbyLb.text = [LVTools mToString:model.signature];
     if (_hobbyLb.text.length==0) {
         _hobbyLb.text = @"这个家伙很懒,什么也没写";
@@ -77,6 +82,7 @@
     else{
         [_headimg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,[LVTools mToString:model.face]]] placeholderImage:[UIImage imageNamed:@"plhor_2"]];
     }
+    
     if ([LVTools mToString: model.distance].length>0) {
         CGFloat distance = [model.distance doubleValue];
         self.distanceLb.text = [NSString stringWithFormat:@"%.2fkm",distance];
@@ -125,6 +131,16 @@
     self.headimg.layer.masksToBounds = YES;
     self.headimg.layer.cornerRadius = (kFriendCellHeight -spaceWidth*2)/2.0;
     [self.contentView addSubview:self.headimg];
+    
+    self.newfans = [[UILabel alloc] initWithFrame:CGRectMake(self.headimg.right-self.headimg.width/3, 0, self.headimg.width/3, 10)];
+    self.newfans.layer.cornerRadius = mygap;
+    self.newfans.layer.masksToBounds = YES;
+    self.newfans.text = @"NEW";
+    self.newfans.font = Content_lbfont;
+    self.newfans.textColor = [UIColor whiteColor];
+//    self.newfans.hidden = YES;
+    [self.contentView addSubview:self.newfans];
+
     //用户昵称
     self.nameLb = [[UILabel alloc] initWithFrame:CGRectMake(self.headimg.right+10, spaceWidth, 80, 20)];
     self.nameLb.font = Btn_font;

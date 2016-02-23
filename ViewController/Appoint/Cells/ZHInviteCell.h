@@ -26,7 +26,7 @@
 @property (nonatomic,assign) MemberType menberType;//几个界面cell的区分
 @property (nonatomic,strong) UIImageView *statusLab;//附近的人里面的队长，队员等区分标志
 @property (nonatomic,strong) UIButton *applyStatus;//申请状态
-
+@property (nonatomic,strong) UILabel *newfans;//新粉丝
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier menbertype:(MemberType)type;
 - (void)configModel:(NearByModel*)model;
 @end
