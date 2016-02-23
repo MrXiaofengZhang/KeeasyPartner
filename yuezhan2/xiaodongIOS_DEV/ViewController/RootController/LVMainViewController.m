@@ -20,7 +20,6 @@
     WPCTeamHpVC * vc3;
     WPCChatHomePageVC * vc4;
     WPCMyOwnVC * vc5;
-    UIView *myCount;
 }
 
 @property (nonatomic, assign)NSInteger tabNum;
@@ -58,9 +57,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setMessageCount) name:NotificationRefreshMessageCount object:nil];
-    [self setMessageCount];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getmessageNum) name:RECEIVEREMOTENOTIFICATION object:nil];
+    //[self setMessageCount];
+    [self getmessageNum];
+    }
+- (void)getmessageNum{
+    if([[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]==0){
+    NSMutableDictionary *dic = [LVTools getTokenApp];
+    [dic setValue:[kUserDefault objectForKey:kUserId] forKey:@"userId"];
+    [DataService requestWeixinAPI:selfmessagecenterNum parsms:@{@"param":[LVTools configDicToDES:dic]} method:@"POST" completion:^(id result) {
+        NSLog(@"%@",result);
+        if([result[@"status"] boolValue]){
+            //全为0表示个人中心没有新内容
+            if([[LVTools mToString:result[@"data"][@"messageCount"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"matchCount"]] isEqualToString:@"0"] ){
+                _myCount.hidden = YES;
+            }else{
+                _myCount.hidden = NO;
+            }
+        }
+        else{
+            [self showHint:ErrorWord];
+        }
+    }];
+    }
+    else{
+        self.myCount.hidden = NO;
+    }
 }
+
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -98,7 +122,7 @@
         UITabBarItem * item = self.tabBar.items[i];
         if (i==2) {
             if (badgeNum>0) {
-                item.badgeValue =[NSString stringWithFormat:@"%ld",(unsigned long)badgeNum];
+//                item.badgeValue =[NSString stringWithFormat:@"%ld",(unsigned long)badgeNum];
             }
             else if(badgeNum==0){
                 item.badgeValue =nil;
@@ -120,7 +144,7 @@
     }
     if (vc5) {
         if (unreadCount > 0) {
-            vc5.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",(int)unreadCount];
+//            vc5.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",(int)unreadCount];
         }else{
             vc5.tabBarItem.badgeValue = nil;
         }
@@ -135,7 +159,7 @@
     NSInteger unreadCount = [[[ApplyViewController shareController] dataSource] count];
     if (vc5) {
         if (unreadCount > 0) {
-            vc5.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",(int)unreadCount];
+//            vc5.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",(int)unreadCount];
         }else{
             vc5.tabBarItem.badgeValue = nil;
         }
@@ -162,7 +186,7 @@
             item.title=titleArray[i];
         if (i==3) {
         if ([[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]>0) {
-            item.badgeValue =[NSString stringWithFormat:@"%ld",(unsigned long)[[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]];
+//            item.badgeValue =[NSString stringWithFormat:@"%ld",(unsigned long)[[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]];
             }
         }
     }
@@ -180,10 +204,11 @@
     }
     
     self.selectedIndex = self.tabNum;
-    myCount  =[[UIView alloc] initWithFrame:CGRectMake(BOUNDS.size.width*0.84, mygap, mygap*2, mygap*2)];
-    myCount.layer.cornerRadius = mygap;
-    myCount.backgroundColor = color_red_dan;
-    [self.tabBar addSubview:myCount];
+    _myCount  =[[UIView alloc] initWithFrame:CGRectMake(BOUNDS.size.width*0.84, mygap, mygap*2, mygap*2)];
+    _myCount.layer.cornerRadius = mygap;
+    _myCount.backgroundColor = [UIColor redColor];
+    _myCount.hidden = YES;
+    [self.tabBar addSubview:_myCount];
 }
 
 - (void)makeUI{
