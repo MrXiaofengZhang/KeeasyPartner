@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LVMainViewController : UITabBarController
-
+@property (nonatomic,strong) UIView *myCount;
 //传递一个number，表明第几个tabbar被选中
 - (instancetype)initWithNumber:(NSInteger)number;
 //设置未读申请个数
