@@ -786,7 +786,7 @@
         if (indexPath.row == 0) {
             //return BOUNDS.size.width*(193.0/750.0);
             if ([[commentsArray objectAtIndex:indexPath.section-4][@"commentImages"] count] > 0) {
-                return [LVTools sizeContent:[commentsArray objectAtIndex:indexPath.section-4][@"message"] With:14 With2:(UISCREENWIDTH-60-60)]+90.0+10.0;
+                return [LVTools sizeContent:[commentsArray objectAtIndex:indexPath.section-4][@"message"] With:14 With2:(UISCREENWIDTH-60-60)]+130.0+10.0;
             }
             else{
                 return [LVTools sizeContent:[commentsArray objectAtIndex:indexPath.section-4][@"message"] With:14 With2:(UISCREENWIDTH-60-60)]+40.0+10.0;
