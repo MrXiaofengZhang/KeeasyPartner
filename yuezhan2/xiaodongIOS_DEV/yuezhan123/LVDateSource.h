@@ -709,6 +709,18 @@
  */
 #define aboutMacthMe @"app/match/aboutMe"
 /**
+ * 我的评论
+ */
+#define myComment @"app/personal/myComment"
+/**
+ * 回复我的
+ */
+#define ReplyMe @"app/personal/ReplyMe"
+/**
+ * 评论详情
+ */
+#define commentDetails @"app/personal/commentDetails"
+/**
  *删除评论，赞，回复
  */
 #define delMatchInteract @"app/match/delInteract"
