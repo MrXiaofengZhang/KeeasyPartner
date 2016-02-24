@@ -446,6 +446,8 @@
 		6B9BA6E21B3D1DC300D4138A /* ZHPayResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9BA6E11B3D1DC300D4138A /* ZHPayResultController.m */; };
 		6B9DD3781B2FE7D400762F4C /* ZHFoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DD3771B2FE7D400762F4C /* ZHFoundViewController.m */; };
 		6B9DD37A1B2FF17500762F4C /* upArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B9DD3791B2FF17500762F4C /* upArrow@2x.png */; };
+		6B9ED7E91C7C20EF00B42500 /* tbtn4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B9ED7E81C7C20EF00B42500 /* tbtn4@2x.png */; };
+		6B9ED7EC1C7C2E1100B42500 /* AboutmeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9ED7EB1C7C2E1100B42500 /* AboutmeController.m */; };
 		6B9FDA741B5895970042C3B4 /* ApplyJionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9FDA731B5895970042C3B4 /* ApplyJionCell.m */; };
 		6B9FDA771B589BB60042C3B4 /* ZHApplyJoinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9FDA761B589BB60042C3B4 /* ZHApplyJoinCell.m */; };
 		6B9FDA7E1B58D64B0042C3B4 /* appImg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B9FDA7D1B58D64B0042C3B4 /* appImg@2x.png */; };
@@ -1440,6 +1442,9 @@
 		6B9DD3761B2FE7D400762F4C /* ZHFoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHFoundViewController.h; sourceTree = "<group>"; };
 		6B9DD3771B2FE7D400762F4C /* ZHFoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHFoundViewController.m; sourceTree = "<group>"; };
 		6B9DD3791B2FF17500762F4C /* upArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upArrow@2x.png"; sourceTree = "<group>"; };
+		6B9ED7E81C7C20EF00B42500 /* tbtn4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tbtn4@2x.png"; sourceTree = "<group>"; };
+		6B9ED7EA1C7C2E1100B42500 /* AboutmeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutmeController.h; sourceTree = "<group>"; };
+		6B9ED7EB1C7C2E1100B42500 /* AboutmeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutmeController.m; sourceTree = "<group>"; };
 		6B9FDA721B5895970042C3B4 /* ApplyJionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyJionCell.h; sourceTree = "<group>"; };
 		6B9FDA731B5895970042C3B4 /* ApplyJionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyJionCell.m; sourceTree = "<group>"; };
 		6B9FDA751B589BB60042C3B4 /* ZHApplyJoinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHApplyJoinCell.h; sourceTree = "<group>"; };
@@ -3318,13 +3323,6 @@
 			name = WPCMsgCenter;
 			sourceTree = "<group>";
 		};
-		6B7A31E91B27E37800454199 /* WPCAddedVenue */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = WPCAddedVenue;
-			sourceTree = "<group>";
-		};
 		6B7A31EB1B27E37F00454199 /* WPCPersonalInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -4729,6 +4727,7 @@
 		CB36004E1ABFB39300A361E4 /* ZH_SelfImg */ = {
 			isa = PBXGroup;
 			children = (
+				6B9ED7E81C7C20EF00B42500 /* tbtn4@2x.png */,
 				6B58B7481BF5B99D0085614B /* fs@2x.png */,
 				6B58B7461BF5B9710085614B /* xxi@2x.png */,
 				6B58B7441BF5B9560085614B /* tbtn3@2x.png */,
@@ -4843,7 +4842,6 @@
 				6B7A32181B27E4D600454199 /* WPC_PersonalCenter */,
 				6B7A31EF1B27E4C800454199 /* WPC_MyOwn */,
 				6B7A31EB1B27E37F00454199 /* WPCPersonalInfo */,
-				6B7A31E91B27E37800454199 /* WPCAddedVenue */,
 				6B7A31E81B27E37500454199 /* WPCMsgCenter */,
 				6B7A31E71B27E37200454199 /* WPCChangePackage */,
 				CBDFDC101AC3B6030041BDF5 /* cells */,
@@ -4878,6 +4876,8 @@
 				6B5DF7861BFC221B00F306C4 /* MessageController.m */,
 				6B0A80591C3D083100E89641 /* EditViewController.h */,
 				6B0A805A1C3D083100E89641 /* EditViewController.m */,
+				6B9ED7EA1C7C2E1100B42500 /* AboutmeController.h */,
+				6B9ED7EB1C7C2E1100B42500 /* AboutmeController.m */,
 			);
 			path = Self;
 			sourceTree = "<group>";
@@ -5139,6 +5139,7 @@
 				6B6961F01BE0AD4A00C89AD6 /* chatBar_colorMore_audioCallSelected@2x.png in Resources */,
 				6B6961FB1BE0AD4A00C89AD6 /* chatBar_more_camera.png in Resources */,
 				6B16EA581C338AD6001BA692 /* 赛事赛程2.png in Resources */,
+				6B9ED7E91C7C20EF00B42500 /* tbtn4@2x.png in Resources */,
 				6B7A32471B27E4D600454199 /* 游泳@2x.png in Resources */,
 				6B5D85D81C4CBD2B005D76BF /* lv_1.png in Resources */,
 				6B6962071BE0AD4A00C89AD6 /* messageToolbarBg@2x.png in Resources */,
@@ -5612,6 +5613,7 @@
 				6B8EA9DA1C7AAE620060206B /* MJRefreshBackFooter.m in Sources */,
 				A9A9001B1ACE686800FFA2AB /* Reachability.m in Sources */,
 				A9C74CFA1AC1231B001BDB82 /* ASINetworkQueue.m in Sources */,
+				6B9ED7EC1C7C2E1100B42500 /* AboutmeController.m in Sources */,
 				6B8EA9E31C7AAE620060206B /* MJRefreshBackStateFooter.m in Sources */,
 				6B31C4251C3BB600005DF062 /* WebCell.m in Sources */,
 				A91128191AD3E157004AA2D9 /* ContactSelectionViewController.m in Sources */,
