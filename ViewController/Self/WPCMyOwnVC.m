@@ -153,12 +153,12 @@
                 fansStatus.hidden = NO;
             }
             //我的评论
-            if([[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"fansStatus"]] length]==0){
+            if([[LVTools mToString:result[@"data"][@"replyCount"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"replyCount"]] length]==0){
                 comentStatus.hidden = YES;
             }else{
                 comentStatus.hidden = NO;
             }
-            if([[LVTools mToString:result[@"data"][@"messageCount"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"matchCount"]] isEqualToString:@"0"]&&[[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]==0){
+            if([[LVTools mToString:result[@"data"][@"messageCount"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"matchCount"]] isEqualToString:@"0"]&&[[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]==0&&[[LVTools mToString:result[@"data"][@"replyCount"]] isEqualToString:@"0"]){
               ((LVMainViewController*)(self.tabBarController)).myCount.hidden = YES;
             }else{
             ((LVMainViewController*)(self.tabBarController)).myCount.hidden = NO;
