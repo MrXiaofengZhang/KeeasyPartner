@@ -287,16 +287,18 @@ void UncaughtExceptionHandler(NSException *exception) {
     }else {
         [self playSoundAndVibration];
         //显示推送信息
-        [WCAlertView showAlertWithTitle:@"新消息" message:[userInfo objectForKey:@"alert"] customizationBlock:nil completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
-            //
-            if(buttonIndex==[alertView cancelButtonIndex]){
-                
-            }
-            else{
-                //去消息中心或者聊天中心
-                
-            }
-        } cancelButtonTitle:@"忽略" otherButtonTitles:@"查看", nil];
+//        [WCAlertView showAlertWithTitle:@"新消息" message:userInfo[@"aps"][@"alert"] customizationBlock:nil completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
+//            //
+//            if(buttonIndex==[alertView cancelButtonIndex]){
+//                
+//            }
+//            else{
+//                //去消息中心或者聊天中心
+//                
+//            }
+//        } cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [self.mainController showHint:userInfo[@"aps"][@"alert"]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:RECEIVEREMOTENOTIFICATION object:nil];
     }
 #endif
 
