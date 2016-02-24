@@ -89,11 +89,7 @@
                                           @"imageWidth":width, //屏幕的宽度
                                           @"imageHeight":height,//屏幕的高度
                                           @"ip":@""},        //用户ip，客户端不需要赋值
-                            @"xgToken":@"1",
-                            @"page":@"1",   //查询时的当前页数
-                            @"rows":@"10",  //当前每一页显示的rows-现在默认是10条数据
-                            @"sort":@"0",   //排序 0：综合排序  1离我最近
-                            @"order":@""};  //order:0:asc 1:desc
+                            };  //order:0:asc 1:desc
     [DataService requestWeixinAPI:getToken parsms:@{@"param":[self configDicToDES:dict]} method:@"post" completion:^(id result) {
         if ([LVTools mToString:result[@"error"]].length>0) {
             NSLog(@"token获取失败");
@@ -209,7 +205,6 @@
     else{
         idfa = [LVTools macaddress];
     }
-
     NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithDictionary:@{@"baseInfo":@{@"packageName":@"",//包名
                                                                                                @"device":@"ios",  //设备
                                                                                                @"model":modelStr, //手机型号
@@ -221,9 +216,7 @@
                                                                                                @"channel":@"App Store",
                                                                                                @"imageWidth":width, //屏幕的宽度
                                                                                                @"imageHeight":height,//屏幕的高度
-                                                                                               @"ip":[LVTools deviceIPAdress]},        //用户ip，客户端不需要赋值
-                                                                                 @"xgToken":([kUserDefault objectForKey:KxgToken]==nil?@"1":[kUserDefault objectForKey:KxgToken]),
-                                                                                 //@"sort":@"0",   //排序 0：综合排序  1离我最近
+                                                                                               @"ip":[LVTools deviceIPAdress]}       //用户ip，客户端不需要赋值
                                                                                  }];
     
     
