@@ -30,10 +30,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _keys = [[NSMutableArray alloc] initWithCapacity:0];
-    for (int i=0; i<26; i++) {
-        [_keys addObject:[NSString stringWithFormat:@"%c",'a'+i]];
-    }
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
     _searchResults = [[NSMutableArray alloc] initWithCapacity:0];
     _allSchoolsArray = [[NSMutableArray alloc] initWithCapacity:0];
@@ -58,6 +55,7 @@
         _tableView.tableHeaderView = mySearchBar;
         _tableView.dataSource = self;
         _tableView.delegate = self;
+        _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     }
     return _tableView;
 }
@@ -71,7 +69,7 @@
     //NSLog(@"%@",[kUserDefault objectForKey:CityCacheTime]);
     [self showHudInView:self.view hint:LoadingWord];
     [DataService requestWeixinAPI:getCity parsms:@{@"param":[LVTools configDicToDES:dic]} method:@"post" completion:^(id result) {
-        //NSLog(@"====%@",result);
+        NSLog(@"====%@",result);
         [self hideHud];
         if (![result[@"status"] isKindOfClass:[NSNull class]]) {
         if ([result[@"status"] boolValue]) {
@@ -79,6 +77,15 @@
             [kUserDefault setObject:result[@"data"][@"time"] forKey:CityCacheTime];
             //NSLog(@"%@",result[@"data"][@"time"]);
             [kUserDefault synchronize];
+            if (_keys==nil) {
+                _keys = [[NSMutableArray alloc] initWithCapacity:0];
+            }
+            NSDictionary *contentDic = result[@"data"][@"citys"];
+            for(NSString *key in contentDic.allKeys){
+                if ([contentDic[key] count]>0) {
+                    [_keys addObject:key];
+                }
+            }
             _dataDict = result[@"data"][@"citys"];
             [self getCityData];
             [self.tableView reloadData];
@@ -109,7 +116,7 @@
     for(NSString *key in _dataDict.allKeys){
         [_allSchoolsArray addObjectsFromArray:[_dataDict objectForKey:key]];
     }
-   // NSLog(@"qq%@",_allSchoolsArray);
+    NSLog(@"qq%@",_allSchoolsArray);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -123,7 +130,7 @@
         return 1;
     }
     else{
-       return 26+1;
+       return _keys.count+1;
     }
     
 }
@@ -136,7 +143,7 @@
             return 0;
         }
         else{
-    return [[_dataDict objectForKey:[NSString stringWithFormat:@"%c",'a'+(int)section-1]] count];
+    return [[_dataDict objectForKey:[NSString stringWithFormat:@"%@",_keys[section-1]]] count];
         }
     }
 }
@@ -151,7 +158,7 @@
         cell.textLabel.text = [_searchResults objectAtIndex:indexPath.row][@"city"];
     }
     else{
-    cell.textLabel.text = [[_dataDict objectForKey:[NSString stringWithFormat:@"%c",'a'+(int)(indexPath.section-1)]] objectAtIndex:indexPath.row][@"city"];
+    cell.textLabel.text = [[_dataDict objectForKey:[NSString stringWithFormat:@"%@",_keys[indexPath.section-1]]] objectAtIndex:indexPath.row][@"city"];
     }
     return cell;
 }
@@ -161,7 +168,7 @@
         return @"";
     }
     else{
-    return [NSString stringWithFormat:@"%c",'A'+(int)section-1];
+    return [NSString stringWithFormat:@"%@",_keys[section-1]];
     }
 }
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -211,7 +218,7 @@
     self.chuanBlock(@[_searchResults[indexPath.row]]);
     }
     else{
-    self.chuanBlock(@[[[_dataDict objectForKey:[NSString stringWithFormat:@"%c",'a'+(int)(indexPath.section-1)]] objectAtIndex:indexPath.row]]);
+    self.chuanBlock(@[[[_dataDict objectForKey:[NSString stringWithFormat:@"%@",_keys[indexPath.section-1]]] objectAtIndex:indexPath.row]]);
     }
     [self dismiss];
 }

@@ -10,7 +10,7 @@
 #import "ChineseInclude.h"
 #import "PinYinForObjc.h"
 @interface CitySchoolsController ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>{
-    NSDictionary *_dataDict;
+    NSMutableDictionary *_dataDict;
     UISearchBar *mySearchBar;
     UISearchDisplayController *searchDisplayController;
     NSMutableArray *_allSchoolsArray;
@@ -50,11 +50,22 @@
     }
     [self showHudInView:self.view hint:LoadingWord];
     [DataService requestWeixinAPI:getCityUniversities parsms:@{@"param":[LVTools configDicToDES:dic]} method:@"post" completion:^(id result) {
-        //NSLog(@"====%@",result);
+        NSLog(@"====%@",result);
         [self hideHud];
         if (!result[@"error"]) {
             if ([result[@"status"] boolValue]) {
-                _dataDict = result[@"data"][@"citySchool"];
+                NSMutableDictionary *contentDic = [NSMutableDictionary dictionaryWithDictionary:result[@"data"][@"citySchool"]];
+                _dataDict = [[NSMutableDictionary alloc] initWithCapacity:0];
+                for (NSString *key in contentDic.allKeys) {
+                    NSMutableArray *schoolArr = [[NSMutableArray alloc] initWithArray:contentDic[key]];
+                    for (NSInteger i=0; i<schoolArr.count; i++) {
+                        if ([schoolArr[i][@"matchNum"] integerValue]==0) {
+                            [schoolArr removeObjectAtIndex:i];
+                        }
+                    }
+                    NSLog(@"%@----%@",key,schoolArr);
+                    [_dataDict setObject:schoolArr forKey:key];
+                }
                 [self getAllschools];
                 self.mTableView.hidden = NO;
                 [self.mTableView reloadData];
@@ -177,6 +188,16 @@
         }
     }
 }
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    NSDictionary *infoDic = [[_dataDict objectForKey: [[_dataDict allKeys] objectAtIndex:indexPath.section-1]] objectAtIndex:indexPath.row];
+//    if ([infoDic[@"matchNum"] integerValue]==0) {
+//        return 0.0;
+//    }
+//    else{
+//        NSLog(@"%f",[[tableView cellForRowAtIndexPath:indexPath] height]);
+//        return [[tableView cellForRowAtIndexPath:indexPath] height];
+//    }
+//}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (tableView == self.searchDisplayController.searchResultsTableView) {
