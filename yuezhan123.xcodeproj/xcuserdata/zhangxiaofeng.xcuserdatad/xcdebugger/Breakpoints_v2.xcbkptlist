@@ -68,7 +68,7 @@
                   moduleName = "yuezhan123"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangxiaofeng/Documents/xiaodong_SVN/xiaodongIOS_DEV/ViewController/Older/WPCGroupChatVC.m"
-                  timestampString = "477914529.480243"
+                  timestampString = "477999601.198887"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
@@ -83,7 +83,7 @@
                   moduleName = "yuezhan123"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangxiaofeng/Documents/xiaodong_SVN/xiaodongIOS_DEV/ViewController/Older/WPCGroupChatVC.m"
-                  timestampString = "477914529.480361"
+                  timestampString = "477999601.199017"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "61"
@@ -308,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yuezhan123/AppDelegate.m"
-            timestampString = "477913755.269268"
+            timestampString = "477972189.111902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "-application:didReceiveRemoteNotification:"
             landmarkType = "5">
          </BreakpointContent>
@@ -324,11 +324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ThirdSource/EMChatUI/Class/AppDelegate+EaseMob.m"
-            timestampString = "477455422.033834"
+            timestampString = "477974777.165432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "406"
-            endingLineNumber = "406"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "-didBindDeviceWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -340,11 +340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yuezhan123/AppDelegate.m"
-            timestampString = "477913755.269268"
+            timestampString = "477973129.348141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "531"
-            endingLineNumber = "531"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
             landmarkName = "-application:didReceiveLocalNotification:"
             landmarkType = "5">
          </BreakpointContent>
@@ -372,12 +372,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yuezhan123/AppDelegate.m"
-            timestampString = "477823102.076138"
+            timestampString = "477972189.111902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "281"
             endingLineNumber = "281"
             landmarkName = "-application:didReceiveRemoteNotification:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Public/Tools/CityTableViewController.m"
+            timestampString = "477996203.524525"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-loadCityData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
