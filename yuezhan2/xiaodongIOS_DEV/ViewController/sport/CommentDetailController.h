@@ -10,4 +10,5 @@
 
 @interface CommentDetailController : BaseViewController
 @property (nonatomic,strong) NSMutableDictionary *commentDic;
+@property (nonatomic,strong) NSString *commentId;
 @end
