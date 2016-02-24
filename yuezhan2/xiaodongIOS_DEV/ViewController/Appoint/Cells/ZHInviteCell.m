@@ -132,12 +132,14 @@
     self.headimg.layer.cornerRadius = (kFriendCellHeight -spaceWidth*2)/2.0;
     [self.contentView addSubview:self.headimg];
     
-    self.newfans = [[UILabel alloc] initWithFrame:CGRectMake(self.headimg.right-self.headimg.width/3, 0, self.headimg.width/3, 10)];
-    self.newfans.layer.cornerRadius = mygap;
+    self.newfans = [[UILabel alloc] initWithFrame:CGRectMake(self.headimg.right-self.headimg.width/2+mygap, self.headimg.top, self.headimg.width/2, 18)];
+    self.newfans.layer.cornerRadius = 18.0/2;
     self.newfans.layer.masksToBounds = YES;
     self.newfans.text = @"NEW";
-    self.newfans.font = Content_lbfont;
+    self.newfans.textAlignment = NSTextAlignmentCenter;
+    self.newfans.font = [UIFont systemFontOfSize:10];
     self.newfans.textColor = [UIColor whiteColor];
+    self.newfans.backgroundColor = color_red_dan;
 //    self.newfans.hidden = YES;
     [self.contentView addSubview:self.newfans];
 
