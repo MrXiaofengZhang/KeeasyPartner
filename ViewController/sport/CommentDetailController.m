@@ -12,14 +12,18 @@
 #import "ZHJubaoController.h"
 #import "LoginLoginZhViewController.h"
 #import "HcCustomKeyboard.h"
+#import "ZHSportDetailController.h"
+#import "GetMatchListModel.h"
 @interface CommentDetailController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,HcCustomKeyboardDelegate>{
     NSMutableArray *replyArray;
     NSString *replyId;
     NSString *replyName;
     HcCustomKeyboard *textView;
+    
 }
 @property (nonatomic,strong) UITableView *mTableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
+@property (nonatomic,strong) UIButton *enterDetailBtn;
 @end
 
 @implementation CommentDetailController
@@ -29,8 +33,50 @@
     // Do any additional setup after loading the view.
     [self navgationBarLeftReturn];
     replyId = nil;
+    //评论详情数据分两种情况获取
+    if (self.commentDic) {
     replyArray = [[NSMutableArray alloc] initWithArray:_commentDic[@"replys"]];
     [self.view addSubview:self.mTableView];
+    }
+    else{
+        [self loadData];
+    }
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (self.commentDic==nil) {
+    if (self.enterDetailBtn.superview==nil) {
+        [self.navigationController.navigationBar addSubview:self.enterDetailBtn];
+    }
+    }
+    
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+   
+    if (self.enterDetailBtn.superview) {
+        [self.enterDetailBtn removeFromSuperview];
+    }
+    
+}
+- (UIButton*)enterDetailBtn{
+    if (_enterDetailBtn==nil) {
+        _enterDetailBtn = [[UIButton alloc] initWithFrame:CGRectMake(BOUNDS.size.width-100, 5, 95, 34)];
+        [_enterDetailBtn setBackgroundColor:[UIColor whiteColor]];
+        [_enterDetailBtn setTitle:@"进入赛事详情" forState:UIControlStateNormal];
+        [_enterDetailBtn setTitleColor:SystemBlue forState:UIControlStateNormal];
+        _enterDetailBtn.titleLabel.font = Btn_font;
+        [_enterDetailBtn addTarget:self action:@selector(enterDetailBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _enterDetailBtn;
+}
+- (void)enterDetailBtnOnClick{
+    ZHSportDetailController *zhVC =[[ZHSportDetailController alloc] init];
+    zhVC.hidesBottomBarWhenPushed = YES;
+    GetMatchListModel *model = [[GetMatchListModel alloc] init];
+    model.id = _commentDic[@"matchId"];
+    zhVC.matchInfo = model;
+    [self.navigationController pushViewController:zhVC animated:YES];
 }
 - (UITableView*)mTableView{
     if (_mTableView == nil) {
@@ -43,6 +89,21 @@
     return _mTableView;
 }
 #pragma mark private
+- (void)loadData{
+    NSMutableDictionary *dic = [LVTools getTokenApp];
+    [dic setValue:self.commentId forKey:@"id"];
+    [self showHudInView:self.view hint:LoadingWord];
+    [DataService requestWeixinAPI:commentDetails parsms:@{@"param":[LVTools configDicToDES:dic]} method:@"post" completion:^(id result) {
+        NSLog(@"final result === %@",result);
+        if ([result[@"status"] boolValue]) {
+            _commentDic = [[NSMutableDictionary alloc] initWithDictionary:result[@"data"]];
+            replyArray = [[NSMutableArray alloc] initWithArray:_commentDic[@"replys"]];
+            [self.view addSubview:self.mTableView];
+        } else {
+            [self showHint:ErrorWord];
+        }
+    }];
+}
 - (void)moreOnClick{
     NSLog(@"举报");
     NSString *islogin = [kUserDefault objectForKey:kUserLogin];
