@@ -69,7 +69,7 @@
         NSLog(@"%@",result);
         if([result[@"status"] boolValue]){
             //全为0表示个人中心没有新内容
-            if([[LVTools mToString:result[@"data"][@"messageCount"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"matchCount"]] isEqualToString:@"0"] ){
+            if([[LVTools mToString:result[@"data"][@"messageCount"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"matchCount"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"replyCount"]] isEqualToString:@"0"] ){
                 _myCount.hidden = YES;
             }else{
                 _myCount.hidden = NO;
