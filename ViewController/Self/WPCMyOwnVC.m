@@ -26,6 +26,8 @@
 #import "ListViewController.h"
 #import "MessageController.h"
 #import "ApplyViewController.h"
+#import "AboutmeController.h"
+#import "LVMainViewController.h"
 @interface WPCMyOwnVC () <UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 {
     BOOL isSignIn;//判断是否签到过
@@ -33,6 +35,8 @@
     UILabel *countlab;//消息中心消息个数
     UILabel *countlab1;//聊天消息个数
     UILabel *orderNumLb;//赛事消息个数
+    UIView *comentStatus;//新回复
+    UIView *fansStatus;//新粉丝
 }
 @property (nonatomic, strong) UITableView *myOwnTableView;
 @property (nonatomic, strong) NSArray *preArray;
@@ -46,6 +50,15 @@
     [super viewDidLoad];
     self.preArray = @[@[@"报名信息"],@[@"聊天",@"我的赛事"],@[@"消息中心"],@[@"设置"]];
     self.imageArray = @[@[@"personal_info"],@[@"xxi",@"participated_match"],@[@"xiaoxinzx",@"order_manage"],@[@"setting_wpc"]];
+    comentStatus = [[UIView alloc] initWithFrame:CGRectMake(LEFTX/1.2, -mygap/2, mygap*2, mygap*2)];
+    comentStatus.layer.cornerRadius = mygap;
+    comentStatus.backgroundColor = [UIColor redColor];
+    comentStatus.hidden = YES;
+    
+    fansStatus = [[UIView alloc] initWithFrame:CGRectMake(LEFTX/1.2, -mygap/2, mygap*2, mygap*2)];
+    fansStatus.layer.cornerRadius = mygap;
+    fansStatus.backgroundColor = [UIColor redColor];
+    fansStatus.hidden = YES;
     [self initialInterface];
     //[self loadData];
     countlab = [[UILabel alloc] initWithFrame:CGRectMake(UISCREENWIDTH-48.0, 48.0/3, 48.0/3, 48.0/3)];
@@ -70,23 +83,26 @@
     
     orderNumLb  =[[UILabel alloc] initWithFrame:CGRectMake(UISCREENWIDTH-48.0, 48.0/3, 48.0/3, 48.0/3)];
     orderNumLb.layer.cornerRadius = 48.0/6;
-    orderNumLb.layer.masksToBounds = YES;
     orderNumLb.textAlignment = NSTextAlignmentCenter;
     orderNumLb.backgroundColor = [UIColor redColor];
     orderNumLb.font = [UIFont systemFontOfSize:10];
     orderNumLb.textColor = [UIColor whiteColor];
     orderNumLb.hidden = YES;
 
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSateChange:) name:LOGINSTATECHANGE_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(personInfoChange:) name:NotificationRefreshAppoint object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMessageCount) name:NotificationRefreshMessageCount object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMessageCount) name:NotificationNewApply object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getmessageNum) name:RECEIVEREMOTENOTIFICATION object:nil];//收到推送
 }
 - (void)refreshMessageCount{
     NSInteger unred = [[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]+[ApplyViewController shareController].dataSource.count;
     if (unred != 0) {
         countlab1.hidden = NO;
         countlab1.text = [NSString stringWithFormat:@"%d",(int)unred];
+        ((LVMainViewController*)(self.tabBarController)).myCount.hidden = NO;
     }
     else{
         countlab1.hidden = YES;
@@ -116,6 +132,7 @@
     NSMutableDictionary *dic = [LVTools getTokenApp];
     [dic setValue:[kUserDefault objectForKey:kUserId] forKey:@"userId"];
     [DataService requestWeixinAPI:selfmessagecenterNum parsms:@{@"param":[LVTools configDicToDES:dic]} method:@"POST" completion:^(id result) {
+        NSLog(@"%@",result);
         if([result[@"status"] boolValue]){
             if([[LVTools mToString:result[@"data"][@"messageCount"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"messageCount"]] length]==0){
                 countlab.hidden = YES;
@@ -129,6 +146,24 @@
                 orderNumLb.hidden = NO;
                 orderNumLb.text = [LVTools mToString:result[@"data"][@"matchCount"]];
             }
+            //粉丝
+            if([[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"fansStatus"]] length]==0){
+                fansStatus.hidden = YES;
+            }else{
+                fansStatus.hidden = NO;
+            }
+            //我的评论
+            if([[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"fansStatus"]] length]==0){
+                comentStatus.hidden = YES;
+            }else{
+                comentStatus.hidden = NO;
+            }
+            if([[LVTools mToString:result[@"data"][@"messageCount"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"matchCount"]] isEqualToString:@"0"]&&[[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]==0){
+              ((LVMainViewController*)(self.tabBarController)).myCount.hidden = YES;
+            }else{
+            ((LVMainViewController*)(self.tabBarController)).myCount.hidden = NO;
+            }
+
         }
         else{
             [self showHint:ErrorWord];
@@ -340,10 +375,10 @@
     UIView *tBtnV = [[UIView alloc] initWithFrame:CGRectMake(0, headerView.bottom, BOUNDS.size.width, 50.0f)];
     tBtnV.backgroundColor = [UIColor whiteColor];
     tBtnV.userInteractionEnabled = YES;
-    NSArray *arr = @[@"tbtn1",@"tbtn3",@"fs"];
-    NSArray *strarr = @[@"我的关注",@"我的收藏",@"粉丝"];
+    NSArray *arr = @[@"tbtn1",@"tbtn3",@"tbtn4",@"fs"];
+    NSArray *strarr = @[@"我的关注",@"我的收藏",@"我的评论",@"粉丝"];
     for (int i=0; i<arr.count; i++) {
-        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(i*5*LEFTX+4*LEFTX, mygap, LEFTX, LEFTX)];
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(i*4*LEFTX+3*LEFTX, mygap, LEFTX, LEFTX)];
         [btn setImage:[UIImage imageNamed:[arr objectAtIndex:i]] forState:UIControlStateNormal];
         btn.contentMode = UIViewContentModeCenter;
         btn.tag = 51+i;
@@ -352,10 +387,16 @@
         UIButton *lab = [[UIButton alloc] initWithFrame:CGRectMake(btn.left-20.0, btn.bottom+mygap, LEFTX+40.0f, 20.0f)];
         lab.titleLabel.font = Content_lbfont;
         [lab setTitle:[strarr objectAtIndex:i] forState:UIControlStateNormal];
-        [lab setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [lab setTitleColor:[UIColor colorWithRed:0.424 green:0.424 blue:0.424 alpha:1.00] forState:UIControlStateNormal];
         [lab addTarget:self action:@selector(bOnClick:) forControlEvents:UIControlEventTouchUpInside];
         lab.tag = 61+i;
         [tBtnV addSubview:lab];
+        if (i==2) {
+            [btn addSubview:comentStatus];
+        }
+        if (i==3) {
+            [btn addSubview:fansStatus];
+        }
     }
     [v addSubview:tBtnV];
     v.frame = CGRectMake(0, 0, BOUNDS.size.width, tBtnV.bottom+mygap*2);
@@ -384,6 +425,12 @@
         listVC.title = @"我的收藏";
         listVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:listVC animated:YES];
+    }
+    else if (btn.tag == 53||btn.tag == 63){
+        //我的评论
+        AboutmeController *aboutVC = [[AboutmeController alloc] init];
+        aboutVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:aboutVC animated:YES];
     }
     else{
         ListViewController *listVC =[[ListViewController alloc] init];
