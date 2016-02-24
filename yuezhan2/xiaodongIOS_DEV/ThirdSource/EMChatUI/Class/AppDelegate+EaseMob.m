@@ -269,11 +269,19 @@
     if (error) {
         alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"login.errorAutoLogin", @"Automatic logon failure") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
+//        [kUserDefault setValue:nil forKey:kUserId];
+//        [kUserDefault setValue:@"" forKey:kUserPassword];
+//        [kUserDefault setValue:@"" forKey:kUserName];
+//        [kUserDefault setValue:@"" forKey:KUserMobile];
+//        [kUserDefault setValue:@"0" forKey:kUserLogin];
+//        [kUserDefault setValue:@"" forKey:KUserAcount];
+//        [kUserDefault setValue:nil forKey:[NSString stringWithFormat:@"xd%@",[kUserDefault objectForKey:kUserId]]];
+//        [kUserDefault synchronize];
+
     }
     else{
         alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"login.beginAutoLogin", @"Start automatic login...") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
     }
-    
     [alertView show];
 }
 
@@ -285,6 +293,15 @@
     if (error) {
         alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"login.errorAutoLogin", @"Automatic logon failure") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
+//        [kUserDefault setValue:nil forKey:kUserId];
+//        [kUserDefault setValue:@"" forKey:kUserPassword];
+//        [kUserDefault setValue:@"" forKey:kUserName];
+//        [kUserDefault setValue:@"" forKey:KUserMobile];
+//        [kUserDefault setValue:@"0" forKey:kUserLogin];
+//        [kUserDefault setValue:@"" forKey:KUserAcount];
+//        [kUserDefault setValue:nil forKey:[NSString stringWithFormat:@"xd%@",[kUserDefault objectForKey:kUserId]]];
+//        [kUserDefault synchronize];
+
     }
     else{
         alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"login.endAutoLogin", @"End automatic login...") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
