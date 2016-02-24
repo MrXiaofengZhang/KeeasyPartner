@@ -162,6 +162,7 @@
 #define DOWNLOAD_COMPLETE_NOTIFICATION @"download_complete_notification"//下载报名表成功的通知
 #define DOWNLOAD_FAILED_NOTIFICATION @"download_failed_notification"//下载报名表失败的通知
 #define WXPAY_BACK_NOTIFICATION @"wxpay_back_notification"//微信支付完成后appdelegate发出的通知
+#define RECEIVEREMOTENOTIFICATION @"receivenotification"//收到推送
 #define PAY_SUCCESS @"pay_success"
 
 //朋友本地缓存路径
