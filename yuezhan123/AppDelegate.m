@@ -279,11 +279,13 @@ void UncaughtExceptionHandler(NSException *exception) {
     [XGPush handleReceiveNotification:userInfo];
     //[XGPush localNotificationAtFrontEnd:notification userInfoKey:@"clockID" userInfoValue:@"myid"];
     NSLog(@"message=%@",userInfo);
+    [[NSNotificationCenter defaultCenter] postNotificationName:RECEIVEREMOTENOTIFICATION object:nil];
     //当收到推送时，app作相应提示
 #if !TARGET_IPHONE_SIMULATOR
     BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
     if (!isAppActivity) {
         [self showNotificationWithDict:userInfo];
+        
     }else {
         [self playSoundAndVibration];
         //显示推送信息
@@ -298,7 +300,7 @@ void UncaughtExceptionHandler(NSException *exception) {
 //            }
 //        } cancelButtonTitle:@"知道了" otherButtonTitles: nil];
         [self.mainController showHint:userInfo[@"aps"][@"alert"]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:RECEIVEREMOTENOTIFICATION object:nil];
+        
     }
 #endif
 
@@ -494,8 +496,6 @@ void UncaughtExceptionHandler(NSException *exception) {
         //[LVTools getIphoneInfo];
     }
 }
-
-
 - (void)showErrorMsg:(NSString *)msg{
     //显示提示信息
     UIView *view = [[UIApplication sharedApplication].delegate window];
@@ -525,6 +525,7 @@ void UncaughtExceptionHandler(NSException *exception) {
     NSLog(@"%@",notification.alertBody);
     //这里不做跳转处理,只刷新消息个数
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRefreshMessageCount object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:RECEIVEREMOTENOTIFICATION object:nil];
     //跳转到聊天页面，
     //NSArray *array =[notification.alertBody componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"(:)"]];
     
@@ -536,7 +537,7 @@ void UncaughtExceptionHandler(NSException *exception) {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
     NSString * date = [formatter stringFromDate:[NSDate date]];
-    NSString * msg = [NSString stringWithFormat:@"您的账号异地登录%@\n如需登陆请重新登录",date];
+    NSString * msg = [NSString stringWithFormat:@"您的账号异地登录%@\n请重新登录",date];
     UIAlertView * aler = [[UIAlertView alloc] initWithTitle:@"提  示" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     aler.tag = 1000;
     [aler show];
