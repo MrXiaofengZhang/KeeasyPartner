@@ -103,6 +103,7 @@
 {
     //拼接此接口的不带参数URL
     NSString *urlstring = [NSString stringWithFormat:@"%@/%@",VHAKKWEIXIN_URL,subURL];
+    NSLog(@"urlstring----------%@",urlstring);
     ASIHTTPRequest *request = [self request:urlstring parsms:params method:method completion:block];
     //拼接此借口完整的URL 带参数
     if (params != Nil) {
@@ -120,7 +121,6 @@
         //api.douban.com?start=0&count=30
         urlstring = [NSString stringWithFormat:@"%@?%@",urlstring,parsmsstring];
     }
-    NSLog(@"request  *****%@",urlstring);
     return request;
     
 }
