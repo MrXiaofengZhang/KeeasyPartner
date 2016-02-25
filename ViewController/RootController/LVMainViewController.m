@@ -14,6 +14,8 @@
 #import "WPCMyOwnVC.h"//新的wpc个人中心
 #import "MobClick.h"
 #import "ApplyViewController.h"
+//#import "WPCFriednMsgVC.h"
+#import "MessageController.h"
 @interface LVMainViewController ()<UITabBarControllerDelegate,IChatManagerDelegate>{
     LVAppointViewController * vc1;
     LVSportViewController * vc2;
@@ -58,10 +60,37 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getmessageNum) name:RECEIVEREMOTENOTIFICATION object:nil];
+    //订阅展示视图消息，将直接打开某个分支视图
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentView:) name:@"PresentView" object:nil];
     //[self setMessageCount];
      [self getmessageNum];
     
+}
+- (void)presentView:(NSNotification*)noti{
+    
+//        NSError *parseError = nil;
+//        NSData  *jsonData = [NSJSONSerialization dataWithJSONObject:noti.userInfo
+//                                                            options:NSJSONWritingPrettyPrinted error:&parseError];
+//        NSString *str =  [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//    
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"推送内容"
+//                                                        message:str
+//                                                       delegate:nil
+//                                              cancelButtonTitle:NSLocalizedString(@"ok", @"OK")
+//                                              otherButtonTitles:nil];
+//        [alert show];
+    //如果能返回关注人的id，就可以直接跳到关注人详情。现在只是当收到消息中心消息时，跳到消息中心
+    UIViewController *showViewController = nil;
+    NSString *type = noti.userInfo[@"type"];
+    if ([type isEqualToString:@"message"]) {
+        showViewController = [[MessageController alloc] init];
+        showViewController.title = @"消息中心";
+        showViewController.hidesBottomBarWhenPushed = YES;
+        [[self.viewControllers objectAtIndex:self.selectedIndex]  pushViewController:showViewController animated:YES];
     }
+    
+
+}
 - (void)getmessageNum{
     
     if([[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]==0){
