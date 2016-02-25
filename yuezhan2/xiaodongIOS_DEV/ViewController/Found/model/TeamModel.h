@@ -123,7 +123,7 @@
 @property (nonatomic,copy) NSString *schoolName;
 @property (nonatomic,copy) NSString *fansCount;
 @property (nonatomic,assign) BOOL isSelected;
-
+@property (nonatomic,copy) NSString *createTime;
 //academic = "\U5728\U8fd9\U91cc";
 //check = 0;
 //club = "\U5728\U8fd9\U91cc";
