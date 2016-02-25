@@ -127,6 +127,7 @@
         orderNumLb.hidden = YES;
         [_myOwnTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:3]] withRowAnimation:UITableViewRowAnimationNone];
     }
+    [self getmessageNum];
 }
 - (void)getmessageNum{
     NSMutableDictionary *dic = [LVTools getTokenApp];
@@ -461,6 +462,9 @@
         [bigImageview.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,[kUserDefault objectForKey:KUserIcon]]] placeholderImage:[UIImage imageNamed:@"plhor_2"]];
         [self.view addSubview:bigImageview];
     }
+    else{
+        [self turnToLogin];
+    }
 }
 - (void)hideHeadImg:(id)sender{
     [bigImageview removeFromSuperview];
@@ -632,14 +636,14 @@
     NSString *islogin = [kUserDefault objectForKey:kUserLogin];
     if ((![islogin isEqualToString:@"1"])&&(!(indexPath.section==3&&indexPath.row==0))) {
         //提示用户登陆
-
-     [WCAlertView showAlertWithTitle:nil message:@"未登录,请前往登录" customizationBlock:^(WCAlertView *alertView) {
+        [WCAlertView showAlertWithTitle:nil message:@"未登录,请前往登录" customizationBlock:^(WCAlertView *alertView) {
             
         } completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
             if (buttonIndex == 0) {
                 [self turnToLogin];
             }
         } cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+        
 
     } else {
         if (indexPath.section == 0) {
