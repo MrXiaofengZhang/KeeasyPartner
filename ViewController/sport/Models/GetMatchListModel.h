@@ -111,5 +111,8 @@
 @property (nonatomic, strong)NSString * payTime;
 @property (nonatomic, strong)NSString * verifyTime;
 @property (nonatomic, strong)NSString * signUpId;
-
+@property (nonatomic, strong)NSString * sort;
+@property (nonatomic, strong)NSString * messageStatus;
+@property (nonatomic, strong)NSString * banner;
+@property (nonatomic, strong)NSString * detailsShow;
 @end
