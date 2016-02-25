@@ -93,7 +93,6 @@
         msgBtn.frame = CGRectMake(0, UISCREENHEIGHT-45, UISCREENWIDTH, 45);
         msgBtn.backgroundColor = SystemBlue;
         msgBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        msgBtn.layer.cornerRadius = mygap;
         [msgBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [msgBtn setTitle:@"发消息" forState:UIControlStateNormal];
         [msgBtn setTitle:@"添加为好友" forState:UIControlStateSelected];
@@ -196,11 +195,11 @@
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, headerView.bottom, BOUNDS.size.width, 44.0)];
     bottomView.backgroundColor = [UIColor whiteColor];
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(20.0, 12.0, 70.0, 20.0)];
-    btn.layer.cornerRadius = 5.0;
     btn.layer.masksToBounds = YES;
     btn.tag = 2601;
     [btn setTitle:@"关注" forState:UIControlStateNormal];
     [btn setTitle:@"取消关注" forState:UIControlStateSelected];
+    btn.layer.cornerRadius = mygap;
     [btn setBackgroundImage:[LVTools buttonImageFromColor:SystemBlue withFrame:btn.bounds] forState:UIControlStateNormal];
     [btn setBackgroundImage:[LVTools buttonImageFromColor:[UIColor lightGrayColor] withFrame:btn.bounds] forState:UIControlStateSelected];
     [btn addTarget:self action:@selector(addclick:) forControlEvents:UIControlEventTouchUpInside];
@@ -255,7 +254,7 @@
     NSLog(@"2");
     if (self.isfriend) {
         CGPoint point = CGPointMake(UISCREENWIDTH-25, 69);
-        PopoverView *pop = [[PopoverView alloc] initWithPoint:point titles:@[@"举报",@"删除好友"] images:@[@"jubao",@"deleteF"] andStyle:PopoverStyleTrancent];
+        PopoverView *pop = [[PopoverView alloc] initWithPoint:point titles:@[@"举报",@"删除"] images:@[@"jubao",@"deleteF"] andStyle:PopoverStyleTrancent];
         pop.borderColor = [UIColor clearColor];
         pop.selectRowAtIndex = ^ (NSInteger index) {
             switch (index) {
