@@ -57,10 +57,10 @@
                 NSMutableDictionary *contentDic = [NSMutableDictionary dictionaryWithDictionary:result[@"data"][@"citySchool"]];
                 _dataDict = [[NSMutableDictionary alloc] initWithCapacity:0];
                 for (NSString *key in contentDic.allKeys) {
-                    NSMutableArray *schoolArr = [[NSMutableArray alloc] initWithArray:contentDic[key]];
-                    for (NSInteger i=0; i<schoolArr.count; i++) {
-                        if ([schoolArr[i][@"matchNum"] integerValue]==0) {
-                            [schoolArr removeObjectAtIndex:i];
+                    NSMutableArray *schoolArr = [[NSMutableArray alloc] initWithCapacity:0];
+                    for (NSDictionary *schoolDic in contentDic[key]) {
+                        if ([schoolDic[@"matchNum"] integerValue]!=0) {
+                            [schoolArr addObject:schoolDic];
                         }
                     }
                     NSLog(@"%@----%@",key,schoolArr);
