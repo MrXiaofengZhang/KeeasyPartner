@@ -28,6 +28,7 @@
 #import "ImgShowViewController.h"
 #import "SportResultController.h"
 #import "UMSocial.h"
+#define TileInitialTag 100000
 @interface ZHSportDetailController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIWebViewDelegate,UMSocialUIDelegate>{
     NSMutableArray *agreeArray;
     NSMutableArray *praiseList;
@@ -104,8 +105,8 @@
     if ([[kUserDefault objectForKey:kUserLogin] isEqualToString:@"1"]) {
     [dic setValue:[kUserDefault objectForKey:kUserId] forKey:@"uid"];
     }
-//    NSLog(@"%@",[kUserDefault objectForKey:kUserId]);
     request = [DataService requestWeixinAPI:getMatchDetail parsms:@{@"param":[LVTools configDicToDES:dic]} method:@"post" completion:^(id result) {
+        NSLog(@"%@",result);
         //加载完网页再隐藏
         if (webLoaded) {
             [self hideHud];
@@ -207,7 +208,7 @@
             }
             else{
                 [self hideHud];
-                [self showHint:result[@"info"]];
+                [self showHint:ErrorWord];
             }
         }
     }];
@@ -600,23 +601,26 @@
             }
             cell.index = indexPath;
             [cell configTheCellContent:[commentsArray objectAtIndex:indexPath.section-4]];
-            cell.morActionBtn.tag = 100+indexPath.section;
-            cell.replyActionBtn.tag = 200+indexPath.section;
+            
+            cell.morActionBtn.tag = TileInitialTag+indexPath.section;
+            cell.replyActionBtn.tag = 2*TileInitialTag+indexPath.section;
+            cell.headImgView.tag = 3*TileInitialTag+indexPath.section;
             [cell.morActionBtn addTarget:self action:@selector(moreOnClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell.replyActionBtn addTarget:self action:@selector(replyOnClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.headImgView addTarget:self action:@selector(headOnClick:) forControlEvents:UIControlEventTouchUpInside];
             //评论里的图片tag为400+i
             if ([[commentsArray objectAtIndex:indexPath.section-4][@"commentImages"] count] > 0) {
                 for (int i = 0; i < [[commentsArray objectAtIndex:indexPath.section-4][@"commentImages"] count]; i++) {
-                    WPCImageView *image = (WPCImageView *)[cell.contentView viewWithTag:400+i];
+                    WPCImageView *image = (WPCImageView *)[cell.contentView viewWithTag:4*TileInitialTag+i];
                     image.row = indexPath.section-4;
                     image.userInteractionEnabled = YES;
                     UITapGestureRecognizer *commentImgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanImagesFromComment:)];
                     [image addGestureRecognizer:commentImgTap];
                 }
-                cell.line.top = [LVTools sizeContent:[commentsArray objectAtIndex:indexPath.section-4][@"message"] With:11 With2:(UISCREENWIDTH-60-60)]+130.0+10.0;
+                cell.line.top = [LVTools sizeContent:[commentsArray objectAtIndex:indexPath.section-4][@"message"] With:14 With2:(UISCREENWIDTH-60-60)]+130.0+10.0;
             }
             else{
-                cell.line.top = [LVTools sizeContent:[commentsArray objectAtIndex:indexPath.section-4][@"message"] With:11 With2:(UISCREENWIDTH-60-60)]+40.0+10.0;
+                cell.line.top = [LVTools sizeContent:[commentsArray objectAtIndex:indexPath.section-4][@"message"] With:14 With2:(UISCREENWIDTH-60-60)]+40.0+10.0;
             }
             if ([[commentsArray objectAtIndex:indexPath.section-4][@"replys"] count]==0) {
                 cell.line.hidden = YES;
@@ -710,9 +714,9 @@
 }
 #pragma mark private
 - (void)moreOnClick:(UIButton*)btn{
-    NSLog(@"举报");
+   
     if ([[kUserDefault objectForKey:kUserLogin] isEqualToString:@"1"]) {
-    selectSection = btn.tag-100;
+    selectSection = btn.tag-TileInitialTag;
     UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"举报", nil];
     [action showInView:self.view];
     }
@@ -725,13 +729,27 @@
 - (void)replyOnClick:(UIButton*)btn{
     CommentDetailController *vc= [[CommentDetailController alloc] init];
     vc.title = @"赛事评论";
-    vc.commentDic =[[NSMutableDictionary alloc] initWithDictionary:[commentsArray objectAtIndex:btn.tag-200-4]];
+    vc.commentDic =[[NSMutableDictionary alloc] initWithDictionary:[commentsArray objectAtIndex:btn.tag-2*TileInitialTag-4]];
     vc.chuanBlock = ^(NSArray* arr){
         if (arr.count>0) {
-            [commentsArray replaceObjectAtIndex:btn.tag-200-4 withObject:[arr lastObject]];
+            [commentsArray replaceObjectAtIndex:btn.tag-2*TileInitialTag-4 withObject:[arr lastObject]];
         }
     };
     [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)headOnClick:(UIButton*)btn{
+    if ([[kUserDefault objectForKey:kUserLogin] isEqualToString:@"1"]) {
+        WPCFriednMsgVC *msgVc =[[WPCFriednMsgVC alloc] init];
+        NSDictionary *dic = commentsArray[btn.tag-3*TileInitialTag-4];
+        msgVc.uid = dic[@"createuser"];
+        [self.navigationController pushViewController:msgVc animated:YES];
+    }
+    else{
+        LoginLoginZhViewController *loginVC = [[LoginLoginZhViewController alloc] init];
+        UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+        [self.navigationController presentViewController:loginNav animated:YES completion:nil];
+    }
+
 }
 - (void)scanImagesFromComment:(UITapGestureRecognizer *)sender {
     //ImgShowViewController
@@ -742,7 +760,7 @@
         [imagearr addObject:str];
     }
     
-    ImgShowViewController *vc = [[ImgShowViewController alloc] initWithSourceData:imagearr withIndex:sender.view.tag-400 hasUseUrl:YES];
+    ImgShowViewController *vc = [[ImgShowViewController alloc] initWithSourceData:imagearr withIndex:sender.view.tag-4*TileInitialTag hasUseUrl:YES];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
