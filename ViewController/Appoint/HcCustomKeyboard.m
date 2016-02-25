@@ -87,6 +87,7 @@ static HcCustomKeyboard *customKeyboard = nil;
     self.mTextView.layer.cornerRadius = 14;
     self.mTextView.layer.borderWidth = 0.5;
     self.mTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.mTextView.returnKeyType = UIReturnKeyDone;
     self.mTextView.delegate = self;
     self.mTextView.text = @"我来说几句....";
     self.mTextView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;;
