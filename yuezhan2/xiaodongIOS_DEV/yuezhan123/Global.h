@@ -167,7 +167,7 @@
 
 //朋友本地缓存路径
 #define LoadingWord @"请稍后..."
-#define ErrorWord @"服务器正在维护,请稍后再试"
+#define ErrorWord @"貌似你的网络不太给力"
 #define EmptyList @"无更多数据"
 #define NotNetWork @"请检查是否启用网络功能\n步骤:设置>通用>无线局域网/蜂窝移动网络"
 #define kDragBack YES
