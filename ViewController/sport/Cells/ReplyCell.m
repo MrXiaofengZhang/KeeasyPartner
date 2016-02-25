@@ -20,9 +20,12 @@
 }
 - (void)configDic:(NSDictionary*)dic{
     NSString *time = [NSString getCreateTime:[NSString stringWithFormat:@"%lld", [dic[@"createtime"] longLongValue]/1000]];
-    NSString *contentstr = [NSString stringWithFormat:@"%@:%@ %@",dic[@"userName"],dic[@"message"],time];
+    NSString *contentstr = nil;
     if ([LVTools mToString:dic[@"parentId"]].length>0) {
         contentstr = [NSString stringWithFormat:@"%@:回复%@ %@ %@",dic[@"userName"],dic[@"lastName"],dic[@"message"],time];
+    }
+    else{
+       contentstr = [NSString stringWithFormat:@"%@:%@ %@",dic[@"userName"],dic[@"message"],time];
     }
     NSRange range1 = [contentstr rangeOfString:[NSString stringWithFormat:@"%@:",dic[@"userName"]]];
     NSRange range2 = [contentstr rangeOfString:time];
