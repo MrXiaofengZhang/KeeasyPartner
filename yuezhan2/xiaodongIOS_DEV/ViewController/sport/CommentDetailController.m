@@ -161,10 +161,10 @@
         [cell.replyActionBtn addTarget:self action:@selector(replyComentOnClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if ([self.commentDic[@"commentImages"] count] > 0) {
-            cell.line.top = [LVTools sizeContent:self.commentDic[@"message"] With:11 With2:(UISCREENWIDTH-60-60)]+130.0+20.0;
+            cell.line.top = [LVTools sizeContent:self.commentDic[@"message"] With:14 With2:(UISCREENWIDTH-60-60)]+130.0+10.0;
         }
         else{
-            cell.line.top = [LVTools sizeContent:self.commentDic[@"message"] With:11 With2:(UISCREENWIDTH-60-60)]+40.0+20.0;
+            cell.line.top = [LVTools sizeContent:self.commentDic[@"message"] With:14 With2:(UISCREENWIDTH-60-60)]+40.0+10.0;
         }
 
         if ([self.commentDic[@"replys"] count]==0) {
