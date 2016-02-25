@@ -125,7 +125,7 @@
     else{
     [self refreshDataSource];
     [self registerNotifications];
-    [self getmessageNum];
+//    [self getmessageNum];
     }
 }
 
