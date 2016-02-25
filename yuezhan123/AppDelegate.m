@@ -167,7 +167,14 @@ void UncaughtExceptionHandler(NSException *exception) {
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //NSLog(@"------------%@",NSHomeDirectory());
-    
+    //判断是否通过点击推送进入应用
+    NSDictionary* remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (remoteNotification) {
+        self.isLaunchedByNotification = YES;
+    }
+    else{
+        self.isLaunchedByNotification = NO;
+    }
     NSSetUncaughtExceptionHandler (&UncaughtExceptionHandler);
     [LVTools getIphoneInfo];
     [self judgeFirst];
@@ -266,7 +273,10 @@ void UncaughtExceptionHandler(NSException *exception) {
     [[EaseMob sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
     
     }
-
+//iOS7可以使用 此方法的调用时，MainViewController已经被初始化，所以我们已经可以在MainViewController注册推送消息的监听，用于展示对应的视图
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PresentView" object:nil userInfo:userInfo];
+}
 //如果deviceToken获取不到会进入此事件
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
     //环信配置文件
