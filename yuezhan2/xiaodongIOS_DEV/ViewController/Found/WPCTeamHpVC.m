@@ -214,12 +214,18 @@
         [weakSelf loadTeamListData];
     }];
 //    }
+    if (![[LVTools mToString:[kUserDefault objectForKey:kUserLogin]] isEqualToString:@"1"]) {
+        return;
+    }
     [self.table.mj_header beginRefreshing];
     
 }
 
 - (void)loadTeamListData{
-   
+    if (![[LVTools mToString:[kUserDefault objectForKey:kUserLogin]] isEqualToString:@"1"]) {
+        return;
+    }
+    
     NSMutableDictionary * dic = [LVTools getTokenApp];
     [dic setValue:sportType forKey:@"sportsType"];
     //[dic setValue:university forKey:@"university"];
