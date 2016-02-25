@@ -613,7 +613,7 @@
                     UITapGestureRecognizer *commentImgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanImagesFromComment:)];
                     [image addGestureRecognizer:commentImgTap];
                 }
-                cell.line.top = [LVTools sizeContent:[commentsArray objectAtIndex:indexPath.section-4][@"message"] With:11 With2:(UISCREENWIDTH-60-60)]+90.0+10.0;
+                cell.line.top = [LVTools sizeContent:[commentsArray objectAtIndex:indexPath.section-4][@"message"] With:11 With2:(UISCREENWIDTH-60-60)]+130.0+10.0;
             }
             else{
                 cell.line.top = [LVTools sizeContent:[commentsArray objectAtIndex:indexPath.section-4][@"message"] With:11 With2:(UISCREENWIDTH-60-60)]+40.0+10.0;
