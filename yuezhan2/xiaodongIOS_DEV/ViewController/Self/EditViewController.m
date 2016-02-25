@@ -106,8 +106,8 @@
             [self.navigationController popViewControllerAnimated:YES];
         }
         else{
-            if ([LVTools mToString: dic[@"info"]].length>0) {
-                [self showHint:dic[@"info"]];
+            if ([LVTools mToString: dic[@"error"]].length>0) {
+                [self showHint:ErrorWord];
             }
             else{
                 [self showHint:ErrorWord];
