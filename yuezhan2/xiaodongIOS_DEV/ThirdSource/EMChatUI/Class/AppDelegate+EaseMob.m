@@ -269,49 +269,37 @@
     if (error) {
         alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"login.errorAutoLogin", @"Automatic logon failure") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
-//        [kUserDefault setValue:nil forKey:kUserId];
-//        [kUserDefault setValue:@"" forKey:kUserPassword];
-//        [kUserDefault setValue:@"" forKey:kUserName];
-//        [kUserDefault setValue:@"" forKey:KUserMobile];
-//        [kUserDefault setValue:@"0" forKey:kUserLogin];
-//        [kUserDefault setValue:@"" forKey:KUserAcount];
-//        [kUserDefault setValue:nil forKey:[NSString stringWithFormat:@"xd%@",[kUserDefault objectForKey:kUserId]]];
-//        [kUserDefault synchronize];
-
+        [alertView show];
     }
     else{
-        alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"login.beginAutoLogin", @"Start automatic login...") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
+//        alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"login.beginAutoLogin", @"Start automatic login...") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
+        
+        [self.mainController showHudInView:[[UIApplication sharedApplication] keyWindow] hint:@"自动登录中"];
     }
-    [alertView show];
+    
 }
 
 // 结束自动登录回调
 -(void)didAutoLoginWithInfo:(NSDictionary *)loginInfo error:(EMError *)error
 {
     
+    [self.mainController hideHud];
     UIAlertView *alertView = nil;
     if (error) {
         alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"login.errorAutoLogin", @"Automatic logon failure") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
-//        [kUserDefault setValue:nil forKey:kUserId];
-//        [kUserDefault setValue:@"" forKey:kUserPassword];
-//        [kUserDefault setValue:@"" forKey:kUserName];
-//        [kUserDefault setValue:@"" forKey:KUserMobile];
-//        [kUserDefault setValue:@"0" forKey:kUserLogin];
-//        [kUserDefault setValue:@"" forKey:KUserAcount];
-//        [kUserDefault setValue:nil forKey:[NSString stringWithFormat:@"xd%@",[kUserDefault objectForKey:kUserId]]];
-//        [kUserDefault synchronize];
-
+        [alertView show];
     }
     else{
-        alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"login.endAutoLogin", @"End automatic login...") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
+//        alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"login.endAutoLogin", @"End automatic login...") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
+        [self.mainController showHint:@"自动登录成功"];
         [[EaseMob sharedInstance].chatManager loadDataFromDatabase];
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRefreshMessageCount object:nil];
         //设置badge
         [self.mainController setMessageCount];
     }
     
-    [alertView show];
+    
 }
 
 // 好友申请回调
