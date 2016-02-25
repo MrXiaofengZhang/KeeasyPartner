@@ -59,9 +59,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getmessageNum) name:RECEIVEREMOTENOTIFICATION object:nil];
     //[self setMessageCount];
-    [self getmessageNum];
+     [self getmessageNum];
+    
     }
 - (void)getmessageNum{
+    
     if([[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]==0){
     NSMutableDictionary *dic = [LVTools getTokenApp];
     [dic setValue:[kUserDefault objectForKey:kUserId] forKey:@"userId"];
