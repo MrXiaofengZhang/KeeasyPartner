@@ -71,7 +71,7 @@
                 [self.mTableView reloadData];
             }
             else{
-                [self showHint:result[@"info"]];
+                [self showHint:ErrorWord];
             }
         }
         else{
