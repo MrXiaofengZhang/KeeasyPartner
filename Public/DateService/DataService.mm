@@ -363,11 +363,12 @@
             NSLog(@"asi http code %ld",(long)code);
             switch (code) {
                 case ASIRequestTimedOutErrorType:
-                    
+                    result = @{/*@"errorcode":[NSString stringWithFormat:@"%d",code],*/
+                               @"error":@"貌似你的网络不太给力!"};
                     break;
-//                case ASIRequestCancelledErrorType:
+                case ASIRequestCancelledErrorType:
 //                    用户取消操作不用处理
-//                    break;
+                    break;
                 default:
                     
                     break;
