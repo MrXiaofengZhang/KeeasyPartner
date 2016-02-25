@@ -59,7 +59,8 @@
 
     _table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, UISCREENWIDTH, UISCREENHEIGHT-49-64) style:UITableViewStylePlain];
     if ([self.title isEqualToString:@"附近球队"]) {
-        _table.frame = CGRectMake(0, 44.0, UISCREENWIDTH, UISCREENHEIGHT-64-44);
+        _table.frame = CGRectMake(0, 44.0, UISCREENWIDTH, UISCREENHEIGHT-64.0-44.0);
+        _table.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     }
     _table.dataSource = self;
     _table.showsVerticalScrollIndicator = NO;
@@ -292,7 +293,12 @@
             }
             [self.table reloadData];
             if ([result[@"moreData"] boolValue]) {
-                
+                __unsafe_unretained __typeof(self) weakSelf = self;
+                self.table.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+                    page=page+1;
+                    [weakSelf loadTeamListData];
+                }];
+
             }
             else{
                 self.table.mj_footer = nil;
