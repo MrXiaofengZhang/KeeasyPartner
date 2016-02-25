@@ -68,7 +68,7 @@
                   moduleName = "yuezhan123"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangxiaofeng/Documents/xiaodong_SVN/xiaodongIOS_DEV/ViewController/Older/WPCGroupChatVC.m"
-                  timestampString = "477999601.198887"
+                  timestampString = "478063579.17203"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
@@ -83,7 +83,7 @@
                   moduleName = "yuezhan123"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangxiaofeng/Documents/xiaodong_SVN/xiaodongIOS_DEV/ViewController/Older/WPCGroupChatVC.m"
-                  timestampString = "477999601.199017"
+                  timestampString = "478063579.172163"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "61"
@@ -154,70 +154,6 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "-loadSignInfo1"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewController/Found/WPCTeamHpVC.m"
-            timestampString = "475750114.178805"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
-            landmarkName = "-loadTeamListData"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[WPCTeamHpVC loadTeamListData]"
-                  moduleName = "yuezhan123"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangxiaofeng/Desktop/yuezhanIOS_DEV/ViewController/Found/WPCTeamHpVC.m"
-                  timestampString = "475565894.224468"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "252"
-                  endingLineNumber = "252"
-                  offsetFromSymbolStart = "880">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__31-[WPCTeamHpVC loadTeamListData]_block_invoke"
-                  moduleName = "yuezhan123"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangxiaofeng/Desktop/yuezhanIOS_DEV/ViewController/Found/WPCTeamHpVC.m"
-                  timestampString = "475565894.2246"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "253"
-                  endingLineNumber = "253"
-                  offsetFromSymbolStart = "64">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewController/Found/WPCTeamHpVC.m"
-            timestampString = "475750114.178805"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
-            landmarkName = "-loadTeamListData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -324,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ThirdSource/EMChatUI/Class/AppDelegate+EaseMob.m"
-            timestampString = "477974777.165432"
+            timestampString = "478061313.721115"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "423"
-            endingLineNumber = "423"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
             landmarkName = "-didBindDeviceWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -394,6 +330,38 @@
             startingLineNumber = "74"
             endingLineNumber = "74"
             landmarkName = "-loadCityData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Public/Tools/CitySchoolsController.m"
+            timestampString = "478061453.135256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-loadCitySchoolsData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Public/Tools/CitySchoolsController.m"
+            timestampString = "478061555.533339"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-loadCitySchoolsData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
