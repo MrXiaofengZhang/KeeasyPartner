@@ -423,18 +423,18 @@
 // 打印收到的apns信息
 -(void)didReiveceRemoteNotificatisonApplication:(UIApplication *)application WithLanption:(NSDictionary *)userInfo{
     
-
-    NSError *parseError = nil;
-    NSData  *jsonData = [NSJSONSerialization dataWithJSONObject:userInfo
-                                                        options:NSJSONWritingPrettyPrinted error:&parseError];
-    NSString *str =  [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"推送内容"
-                                                    message:str
-                                                   delegate:nil
-                                          cancelButtonTitle:NSLocalizedString(@"ok", @"OK")
-                                          otherButtonTitles:nil];
-    [alert show];
+//显示推送内容
+//    NSError *parseError = nil;
+//    NSData  *jsonData = [NSJSONSerialization dataWithJSONObject:userInfo
+//                                                        options:NSJSONWritingPrettyPrinted error:&parseError];
+//    NSString *str =  [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"推送内容"
+//                                                    message:str
+//                                                   delegate:nil
+//                                          cancelButtonTitle:NSLocalizedString(@"ok", @"OK")
+//                                          otherButtonTitles:nil];
+//    [alert show];
    
     UILocalNotification * notification = [[UILocalNotification alloc] init];
      NSString *title = userInfo[@"f"];
