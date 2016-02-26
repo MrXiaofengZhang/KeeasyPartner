@@ -63,7 +63,10 @@
     //订阅展示视图消息，将直接打开某个分支视图
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentView:) name:@"PresentView" object:nil];
     //[self setMessageCount];
-     [self getmessageNum];
+    if ([[kUserDefault objectForKey:kToken] length]==32) {
+        [self getmessageNum];
+    }
+    
     
 }
 - (void)presentView:(NSNotification*)noti{
@@ -100,7 +103,11 @@
         NSLog(@"%@",result);
         if([result[@"status"] boolValue]){
             //全为0表示个人中心没有新内容
-            if([[LVTools mToString:result[@"data"][@"messageCount"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"matchCount"]] isEqualToString:@"0"]&&[[LVTools mToString:result[@"data"][@"replyCount"]] isEqualToString:@"0"] ){
+            if(([[LVTools mToString:result[@"data"][@"messageCount"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"messageCount"]] length]==0)&&
+               ([[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"fansStatus"]] length]==0)&&
+               ([[LVTools mToString:result[@"data"][@"matchCount"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"matchCount"]] length]==0)&&
+               [[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]==0&&
+               ([[LVTools mToString:result[@"data"][@"replyCount"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"replyCount"]] length]==0)){
                 _myCount.hidden = YES;
             }else{
                 _myCount.hidden = NO;
