@@ -68,7 +68,7 @@
                   moduleName = "yuezhan123"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangxiaofeng/Documents/xiaodong_SVN/xiaodongIOS_DEV/ViewController/Older/WPCGroupChatVC.m"
-                  timestampString = "478082610.069931"
+                  timestampString = "478168426.346477"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
@@ -83,7 +83,7 @@
                   moduleName = "yuezhan123"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangxiaofeng/Documents/xiaodong_SVN/xiaodongIOS_DEV/ViewController/Older/WPCGroupChatVC.m"
-                  timestampString = "478082610.070069"
+                  timestampString = "478168426.346602"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "61"
@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ThirdSource/EMChatUI/Class/AppDelegate+EaseMob.m"
-            timestampString = "478061313.721115"
+            timestampString = "478166373.386503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
             landmarkName = "-didBindDeviceWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,6 +346,22 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "-loadCitySchoolsData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ThirdSource/EMChatUI/Class/Contacts/FriendApply/ApplyViewController.m"
+            timestampString = "478168425.141628"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
