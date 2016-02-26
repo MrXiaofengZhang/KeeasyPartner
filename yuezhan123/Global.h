@@ -60,8 +60,8 @@
 //校动token
 #define kToken @"xdtoken"
 
-//#define VHAKKWEIXIN_URL @"http://123.57.212.220:9000/xiaodong"//正式
-#define VHAKKWEIXIN_URL @"http://192.168.1.109/xiaodong"//少丰
+#define VHAKKWEIXIN_URL @"http://123.57.212.220:9000/xiaodong"//正式
+//#define VHAKKWEIXIN_URL @"http://192.168.1.109/xiaodong"//少丰
 //#define VHAKKWEIXIN_URL @"http://192.168.1.111/xiaodong"//彭飞
 //#define VHAKKWEIXIN_URL @"http://111.13.56.45:8080/xiaodong"//测试
 
