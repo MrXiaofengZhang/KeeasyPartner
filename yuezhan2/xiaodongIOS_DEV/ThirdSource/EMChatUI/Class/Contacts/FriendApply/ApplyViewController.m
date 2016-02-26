@@ -136,10 +136,18 @@ static ApplyViewController *controller = nil;
                 cell.headerImageView.image = [UIImage imageNamed:@"groupPrivateHeader"];
             }
             else if(applyStyle == ApplyStyleFriend){
-                NearByModel *model =[NSKeyedUnarchiver unarchiveObjectWithData: [LVTools mGetLocalDataByKey:[NSString stringWithFormat:@"xd%@",entity.applicantUsername]]];
-                if (model) {
+                id obj =[NSKeyedUnarchiver unarchiveObjectWithData: [LVTools mGetLocalDataByKey:[NSString stringWithFormat:@"xd%@",entity.applicantUsername]]];
+                NSLog(@"%@",obj);
+                if (obj) {
+                    if ([obj isKindOfClass:[NSDictionary class]]) {
+                        NSDictionary * useeInfo= obj;
+                        cell.titleLabel.text = useeInfo[@""][@""];
+                    }
+                    else if([obj isKindOfClass:[NearByModel class]]){
+                        NearByModel *model = obj;
                     cell.titleLabel.text = model.nickName;
                     [cell.headerImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,model.path]] placeholderImage:[UIImage imageNamed:@"plhor_2"]];
+                    }
                 }
                 else{
                 cell.titleLabel.text = entity.applicantUsername;
