@@ -240,7 +240,7 @@
 -(void)goToAppStore
 {
     NSString *str = [NSString stringWithFormat:
-                     @"http://itunes.apple.com/app/id982404823?mt=8"]; //appID 解释如下
+                     @"http://itunes.apple.com/app/id%@?mt=8",kAppID]; //appID 解释如下
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     
 }
