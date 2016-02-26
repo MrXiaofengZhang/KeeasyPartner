@@ -40,15 +40,18 @@
     [self registerRemoteNotification];
     //配置【环信的远程通知】
     NSString *apnsCertName = nil;
+    NSString *appkey = nil;
 #if DEBUG
     apnsCertName = @"xd_dev";
+    appkey = @"yizhichaoyue#xiaodong";
 #else
     apnsCertName = @"xd_dis";
+    appkey = @"yizhichaoyue#xiaodongup";
 #endif
     //yizhichaoyue#xiaodong
     NSLog(@"%@",apnsCertName);
     //easemob-demo#chatdemoui
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"yizhichaoyue#xiaodong"
+    [[EaseMob sharedInstance] registerSDKWithAppKey:appkey
                                        apnsCertName:apnsCertName
                                         otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:NO]}];
     
