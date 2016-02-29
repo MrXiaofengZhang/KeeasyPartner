@@ -293,17 +293,11 @@
             }
             [self.table reloadData];
             if ([result[@"moreData"] boolValue]) {
-                __unsafe_unretained __typeof(self) weakSelf = self;
-                self.table.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-                    page=page+1;
-                    [weakSelf loadTeamListData];
-                }];
-
+                self.table.mj_footer.hidden = NO;
             }
             else{
-                self.table.mj_footer = nil;
+                self.table.mj_footer.hidden = YES;
             }
-
         }
         else{
             [self showHint:ErrorWord];
