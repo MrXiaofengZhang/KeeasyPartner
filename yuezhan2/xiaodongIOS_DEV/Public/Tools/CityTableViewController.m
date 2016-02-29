@@ -95,14 +95,14 @@
         }
         else{
             //无更新
-            _dataDict = [[NSDictionary alloc] initWithContentsOfFile:CITYLISTFILEPATH];
-            if (_dataDict) {
-                [self getCityData];
-                [self.tableView reloadData];
-            }
-            else{
-                //这里有个容错处理
-            }
+//            _dataDict = [[NSDictionary alloc] initWithContentsOfFile:CITYLISTFILEPATH];
+//            if (_dataDict) {
+//                [self getCityData];
+//                [self.tableView reloadData];
+//            }
+//            else{
+//                //这里有个容错处理
+//            }
         }
         }
         else{
