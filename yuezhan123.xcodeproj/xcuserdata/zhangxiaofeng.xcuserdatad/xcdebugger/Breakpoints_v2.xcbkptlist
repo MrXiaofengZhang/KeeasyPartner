@@ -68,7 +68,7 @@
                   moduleName = "yuezhan123"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangxiaofeng/Documents/xiaodong_SVN/xiaodongIOS_DEV/ViewController/Older/WPCGroupChatVC.m"
-                  timestampString = "478168426.346477"
+                  timestampString = "478420522.6416"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
@@ -83,7 +83,7 @@
                   moduleName = "yuezhan123"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangxiaofeng/Documents/xiaodong_SVN/xiaodongIOS_DEV/ViewController/Older/WPCGroupChatVC.m"
-                  timestampString = "478168426.346602"
+                  timestampString = "478420522.64175"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "61"
@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ThirdSource/EMChatUI/Class/ChatGroup/ChatGroupDetailViewController.m"
-            timestampString = "474450998.06525"
+            timestampString = "478420305.103474"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "904"
-            endingLineNumber = "904"
+            startingLineNumber = "908"
+            endingLineNumber = "908"
             landmarkName = "-selectPickerImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -329,22 +329,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
             endingLineNumber = "55"
-            landmarkName = "-loadCitySchoolsData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Public/Tools/CitySchoolsController.m"
-            timestampString = "478061555.533339"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
             landmarkName = "-loadCitySchoolsData"
             landmarkType = "5">
          </BreakpointContent>
