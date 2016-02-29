@@ -21,6 +21,7 @@
 #import "NearByModel.h"
 #import "ZHupdateImage.h"
 #import "WPCFriednMsgVC.h"
+#import "WPCMyOwnVC.h"
 #import "ZHJubaoController.h"
 #pragma mark - ChatGroupDetailViewController
 #define kColOfRow 6
@@ -490,9 +491,16 @@
     });
 }
 - (void)headImgOnclick:(UITapGestureRecognizer*)tap{
+    if ([[self.dataSource objectAtIndex:tap.view.tag-100] isEqualToString:[LVTools mToString:[kUserDefault valueForKey:kUserId]]]) {
+        WPCMyOwnVC *vc = [[WPCMyOwnVC alloc] init];
+        vc.basicVC = NO;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else{
     WPCFriednMsgVC *friendInfo = [[WPCFriednMsgVC alloc] init];
     friendInfo.uid = [self.dataSource objectAtIndex:tap.view.tag-100];
     [self.navigationController pushViewController:friendInfo animated:YES];
+    }
 }
 - (void)refreshScrollView
 {
@@ -540,7 +548,7 @@
                     contactView.remark = [LVTools mToString:[LVTools mToString:[kUserDefault objectForKey:kUserName]]];
                 }
                 else{
-                [contactView.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,model.iconPath]] placeholderImage: [UIImage imageNamed:@"plhor_2"]];
+                [contactView.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,model.path]] placeholderImage: [UIImage imageNamed:@"plhor_2"]];
                 contactView.remark = [LVTools mToString:model.nickName];
                 }
                 if (![username isEqualToString:loginUsername]) {
@@ -680,6 +688,7 @@
 - (void)addContact:(id)sender
 {
     ZHInviteFriendController *selectionController = [[ZHInviteFriendController alloc] initWithBlockSelectedUsernames:_chatGroup.occupants];
+    selectionController.title = @"邀请入群";
     selectionController.chuanBlock = ^(NSArray *arr){
         
         NSInteger maxUsersCount = _chatGroup.groupSetting.groupMaxUsersCount;
