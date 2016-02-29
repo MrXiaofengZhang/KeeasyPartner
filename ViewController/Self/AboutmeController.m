@@ -27,7 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     page = 1;
-    rows = 5;
+    rows = 10;
     [self navgationBarLeftReturn];
     [self.view addSubview:self.mTableView];
     [self MJRrefresh];
@@ -85,10 +85,10 @@
             [weakSelf.mTableView reloadData];
             [weakSelf loadData];
         }
-        
     }];
     // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
-    _mTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.mTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        NSLog(@"11111");
         page++;
         [weakSelf loadData];
     }];
@@ -154,19 +154,10 @@
             }
             [self.mTableView reloadData];
             if ([result[@"moreData"] boolValue]) {
-                __unsafe_unretained __typeof(self) weakSelf = self;
-                _mTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-                    page++;
-                    if (request != nil) {
-                        
-                    }
-                    else{
-                        [weakSelf loadData];
-                    }
-                }];
+                _mTableView.mj_footer.hidden = NO;
             }
             else{
-                self.mTableView.mj_footer = nil;
+                self.mTableView.mj_footer.hidden = YES;
             }
         }
         else{
@@ -278,6 +269,9 @@
     else{
         
     }
+    vc.chuanBlock = ^(NSArray* arr){
+      
+    };
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)didReceiveMemoryWarning {
