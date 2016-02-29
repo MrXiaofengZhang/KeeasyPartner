@@ -1145,7 +1145,6 @@
     dispatch_async(_messageQueue, ^{
         long long timestamp = [[NSDate date] timeIntervalSince1970] * 1000 + 1;
         NSArray *messages = [weakSelf.conversation loadNumbersOfMessages:([weakSelf.messages count] + KPageCount) before:timestamp];
-        NSLog(@"messages ============= %@",messages);
         if ([messages count] > 0) {
             weakSelf.messages = [messages mutableCopy];
             NSInteger currentCount = [weakSelf.dataSource count];
