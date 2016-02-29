@@ -103,7 +103,6 @@
 }
 
 + (NSString *)configDicToDES:(NSDictionary *)dict{
-    NSLog(@"DESstr == %@",dict);
     NSString * string = [dict JSONString];
 //    NSError *parseError = nil;
 //    
