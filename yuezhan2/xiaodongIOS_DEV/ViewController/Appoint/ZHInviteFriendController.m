@@ -184,6 +184,9 @@
     if ([self.title isEqualToString:@"邀请好友"]) {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(finishOnClick:)];
     }
+    else if ([self.title isEqualToString:@"邀请入群"]){
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStyleBordered target:self action:@selector(finishOnClick:)];
+    }
     _dataArray =[[NSMutableArray alloc] initWithCapacity:0];
     teamArray = [[NSMutableArray alloc] initWithCapacity:0];
    
@@ -659,35 +662,38 @@
     }
 }
 - (void)finishOnClick:(id)sender{
-//    NSMutableString *friendStr = [[NSMutableString alloc] init];
-//    NSMutableArray *friendModelArr = [[NSMutableArray alloc] initWithCapacity:0];
-//    NSString *textMessage = [NSString stringWithFormat:@"快来参加比赛－%@",[LVTools mToString:self.nameStr]];
-//    if ([self.type isEqualToString:@"0"]) {
-//        textMessage = [NSString stringWithFormat:@"快来参加约战－%@",[LVTools mToString:self.nameStr]];
-//    }
-//    if([self.type isEqualToString:@"1"]){
-//        textMessage = [NSString stringWithFormat:@"快来加入战队－%@",[LVTools mToString:self.nameStr]];
-//    }
-//    if([self.type isEqualToString:@"2"]){
-//        textMessage = [NSString stringWithFormat:@"快来参加比赛－%@",[LVTools mToString:self.nameStr]];
-//    }
-//    for (NearByModel *model in _dataArray) {
-//        if (model.selected == YES) {
-//            if (self.type) {
-//                NSLog(@"%@",[NSString stringWithFormat:@"%@",model.uid]);
-//                [ChatSendHelper sendTextMessageWithString:textMessage
-//                                               toUsername:[NSString stringWithFormat:@"%@",model.uid]
-//                                              isChatGroup:NO
-//                                        requireEncryption:NO
-//                                                      ext:nil];
+    if ([self.title isEqualToString:@"邀请入群"]) {
+            NSMutableString *friendStr = [[NSMutableString alloc] init];
+            NSMutableArray *friendModelArr = [[NSMutableArray alloc] initWithCapacity:0];
+//            NSString *textMessage = [NSString stringWithFormat:@"快来参加比赛－%@",[LVTools mToString:self.nameStr]];
+//            if ([self.type isEqualToString:@"0"]) {
+//                textMessage = [NSString stringWithFormat:@"快来参加约战－%@",[LVTools mToString:self.nameStr]];
 //            }
-//            [friendStr appendString:[NSString stringWithFormat:@"%@,",model.userId]];
-//            [friendModelArr addObject:model];
-//        }
-//    }
-//    self.chuanBlock(friendModelArr);
-//    NSLog(@"邀请好友的Id%@",friendStr);
-//    [self.navigationController popViewControllerAnimated:YES];
+//            if([self.type isEqualToString:@"1"]){
+//                textMessage = [NSString stringWithFormat:@"快来加入战队－%@",[LVTools mToString:self.nameStr]];
+//            }
+//            if([self.type isEqualToString:@"2"]){
+//                textMessage = [NSString stringWithFormat:@"快来参加比赛－%@",[LVTools mToString:self.nameStr]];
+//            }
+            for (NearByModel *model in _dataArray) {
+                if (model.selected == YES) {
+//                    if (self.type) {
+//                        NSLog(@"%@",[NSString stringWithFormat:@"%@",model.uid]);
+//                        [ChatSendHelper sendTextMessageWithString:textMessage
+//                                                       toUsername:[NSString stringWithFormat:@"%@",model.uid]
+//                                                      isChatGroup:NO
+//                                                requireEncryption:NO
+//                                                              ext:nil];
+//                    }
+                    [friendStr appendString:[NSString stringWithFormat:@"%@,",model.userId]];
+                    [friendModelArr addObject:model];
+                }
+            }
+            self.chuanBlock(friendModelArr);
+            NSLog(@"邀请好友的Id%@",friendStr);
+            [self.navigationController popViewControllerAnimated:YES];
+    }
+    else{
     NSMutableArray *ids = [[NSMutableArray alloc] initWithCapacity:0];
     for (NSInteger i=0;i<_dataArray.count;i++) {
         if ([self.title isEqualToString:@"赛事报名"]) {
@@ -701,6 +707,7 @@
         }
     }
     [self inviteJoinTeamWithIds:ids];
+    }
 }
 - (void)inviteJoinTeamWithIds:(NSArray*)ids{
     [self showHudInView:self.view hint:LoadingWord];
