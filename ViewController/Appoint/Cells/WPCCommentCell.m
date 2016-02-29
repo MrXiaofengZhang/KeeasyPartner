@@ -83,7 +83,7 @@
     _genderImg.contentMode = UIViewContentModeScaleAspectFit;
     
     //
-    _floorLb.frame = CGRectMake(_nickNameLb.left, _nickNameLb.bottom, 100.0, _nickNameLb.height);
+    _floorLb.frame = CGRectMake(_nickNameLb.left, _nickNameLb.bottom, 150.0, _nickNameLb.height);
     _floorLb.font = [UIFont systemFontOfSize:11.0];
     _floorLb.textColor = [UIColor lightGrayColor];
     
@@ -126,7 +126,7 @@
         for (int i = 0; i < [dic[@"commentImages"] count]; i ++) {
             WPCImageView *image = [[WPCImageView alloc] initWithFrame:CGRectMake(60+i*85, _contentLab.bottom, 80, 80)];
             [image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,[LVTools mToString:[dic[@"commentImages"][i] valueForKey:@"path"]]]] placeholderImage:[UIImage imageNamed:@"applies_plo"]];
-            image.tag = 400+i;
+            image.tag = 90+i;
             image.contentMode = UIViewContentModeScaleAspectFill;
             image.clipsToBounds = YES;
             [self.contentView addSubview:image];
@@ -199,7 +199,7 @@
             [image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,[LVTools mToString:[dic[@"commentShowList"][i] valueForKey:@"path"]]]] placeholderImage:[UIImage imageNamed:@"applies_plo"]];
             image.contentMode = UIViewContentModeScaleAspectFill;
             image.clipsToBounds = YES;
-            image.tag = 400+i;
+            image.tag = 90+i;
             [self.contentView addSubview:image];
         }
         _timeLab.frame = CGRectMake(60, _contentLab.bottom+50, 100, 15);
