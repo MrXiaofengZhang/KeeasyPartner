@@ -28,6 +28,7 @@
 #import "ImgShowViewController.h"
 #import "SportResultController.h"
 #import "UMSocial.h"
+#import "WPCMyOwnVC.h"
 #define TileInitialTag 100000
 @interface ZHSportDetailController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIWebViewDelegate,UMSocialUIDelegate>{
     NSMutableArray *agreeArray;
@@ -608,10 +609,10 @@
             [cell.morActionBtn addTarget:self action:@selector(moreOnClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell.replyActionBtn addTarget:self action:@selector(replyOnClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell.headImgView addTarget:self action:@selector(headOnClick:) forControlEvents:UIControlEventTouchUpInside];
-            //评论里的图片tag为400+i
+            //评论里的图片tag为90+i
             if ([[commentsArray objectAtIndex:indexPath.section-4][@"commentImages"] count] > 0) {
                 for (int i = 0; i < [[commentsArray objectAtIndex:indexPath.section-4][@"commentImages"] count]; i++) {
-                    WPCImageView *image = (WPCImageView *)[cell.contentView viewWithTag:4*TileInitialTag+i];
+                    WPCImageView *image = (WPCImageView *)[cell.contentView viewWithTag:90+i];
                     image.row = indexPath.section-4;
                     image.userInteractionEnabled = YES;
                     UITapGestureRecognizer *commentImgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanImagesFromComment:)];
@@ -739,10 +740,19 @@
 }
 - (void)headOnClick:(UIButton*)btn{
     if ([[kUserDefault objectForKey:kUserLogin] isEqualToString:@"1"]) {
+        
+         NSDictionary *dic = commentsArray[btn.tag-3*TileInitialTag-4];
+        if ([[LVTools mToString:dic[@"createuser"]] isEqualToString:[LVTools mToString:[kUserDefault valueForKey:kUserId]]]) {
+            WPCMyOwnVC *vc = [[WPCMyOwnVC alloc] init];
+            vc.basicVC = NO;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else{
         WPCFriednMsgVC *msgVc =[[WPCFriednMsgVC alloc] init];
         NSDictionary *dic = commentsArray[btn.tag-3*TileInitialTag-4];
         msgVc.uid = dic[@"createuser"];
         [self.navigationController pushViewController:msgVc animated:YES];
+        }
     }
     else{
         LoginLoginZhViewController *loginVC = [[LoginLoginZhViewController alloc] init];
@@ -760,7 +770,7 @@
         [imagearr addObject:str];
     }
     
-    ImgShowViewController *vc = [[ImgShowViewController alloc] initWithSourceData:imagearr withIndex:sender.view.tag-4*TileInitialTag hasUseUrl:YES];
+    ImgShowViewController *vc = [[ImgShowViewController alloc] initWithSourceData:imagearr withIndex:sender.view.tag-90 hasUseUrl:YES];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -1029,6 +1039,9 @@
         CommentDetailController *vc= [[CommentDetailController alloc] init];
         vc.title = @"赛事评论";
         vc.commentDic = [commentsArray objectAtIndex:indexPath.section-4];
+            vc.chuanBlock = ^(NSArray* arr){
+                [self loadMatchData];
+            };
         [self.navigationController pushViewController:vc animated:YES];
 
         }

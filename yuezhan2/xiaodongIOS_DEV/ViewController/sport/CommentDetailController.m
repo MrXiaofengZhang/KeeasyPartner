@@ -44,7 +44,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if (self.commentDic==nil) {
+    if (self.commentId) {
     if (self.enterDetailBtn.superview==nil) {
         [self.navigationController.navigationBar addSubview:self.enterDetailBtn];
     }
@@ -157,6 +157,8 @@
         }
         cell.index = indexPath;
         [cell configTheCellContent:self.commentDic];
+        cell.floorLb.text =[NSString stringWithFormat:@"%@", [NSString getCreateTime:[NSString stringWithFormat:@"%ld", [self.commentDic[@"createtime"] longValue]/1000]]];
+
         [cell.morActionBtn addTarget:self action:@selector(moreOnClick) forControlEvents:UIControlEventTouchUpInside];
         [cell.replyActionBtn addTarget:self action:@selector(replyComentOnClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -263,7 +265,8 @@
                                     }];
             [self.mTableView reloadData];
             [self.commentDic setObject:replyArray forKey:@"replys"];
-            self.chuanBlock(@[self.commentDic]);
+            NSLog(@"%@",_commentDic);
+            self.chuanBlock(@[_commentDic]);
         } else {
             [self showHint:@"发表失败，请重试"];
         }
