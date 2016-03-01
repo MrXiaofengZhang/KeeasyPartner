@@ -120,10 +120,10 @@
                 }
                 [self.mTableView reloadData];
                 if ([result[@"moreData"] boolValue]) {
-                    
+                    self.mTableView.mj_footer.hidden = NO;
                 }
                 else{
-                    self.mTableView.mj_footer = nil;
+                    self.mTableView.mj_footer.hidden = YES;
                 }
 
             }
@@ -158,10 +158,10 @@
                 }
                 [self.mTableView reloadData];
                 if ([result[@"moreData"] boolValue]) {
-                    
+                    self.mTableView.mj_footer.hidden = NO;
                 }
                 else{
-                    self.mTableView.mj_footer = nil;
+                    self.mTableView.mj_footer.hidden = YES;
                 }
 
             }
@@ -242,10 +242,10 @@
                 }
                 [self.mTableView reloadData];
                 if ([result[@"moreData"] boolValue]) {
-                    
+                    self.mTableView.mj_footer.hidden = NO;
                 }
                 else{
-                    self.mTableView.mj_footer = nil;
+                    self.mTableView.mj_footer.hidden = YES;
                 }
 
             }
