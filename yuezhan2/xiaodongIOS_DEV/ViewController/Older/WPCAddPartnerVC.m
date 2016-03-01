@@ -102,10 +102,10 @@
                 [self.tableView reloadData];
             }
             if ([resultDic[@"moreData"] boolValue]) {
-                
+                self.tableView.mj_footer.hidden = NO;
             }
             else{
-                _tableView.mj_footer = nil;
+                _tableView.mj_footer.hidden =YES;
             }
 
         }else{
