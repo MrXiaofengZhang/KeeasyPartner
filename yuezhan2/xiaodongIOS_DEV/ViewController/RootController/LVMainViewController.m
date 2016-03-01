@@ -34,8 +34,6 @@
     self = [super init];
     if (self) {
         self.tabNum = number;
-        [self makeUI];
-        [self createItems];
         self.delegate = self;
     }
     return self;
@@ -59,15 +57,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    [self makeUI];
+    [self createItems];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getmessageNum) name:RECEIVEREMOTENOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMyCount) name:NotificationRefreshMessageCount object:nil];
     //订阅展示视图消息，将直接打开某个分支视图
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentView:) name:@"PresentView" object:nil];
     //[self setMessageCount];
     if ([[kUserDefault objectForKey:kToken] length]==32) {
         [self getmessageNum];
     }
-    
-    
+}
+- (void)showMyCount{
+    _myCount.hidden = NO;
 }
 - (void)presentView:(NSNotification*)noti{
     
@@ -106,7 +108,7 @@
             if(([[LVTools mToString:result[@"data"][@"messageCount"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"messageCount"]] length]==0)&&
                ([[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"fansStatus"]] length]==0)&&
                ([[LVTools mToString:result[@"data"][@"matchCount"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"matchCount"]] length]==0)&&
-               [[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]==0&&
+               [[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]+[ApplyViewController shareController].dataSource.count==0&&
                ([[LVTools mToString:result[@"data"][@"replyCount"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"replyCount"]] length]==0)){
                 _myCount.hidden = YES;
             }else{
@@ -154,7 +156,12 @@
     //需要加上申请未读消息数
     NSInteger badgeNum = [[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]+[[[ApplyViewController shareController] dataSource] count];
     NSLog(@"未读个数%d",(int)badgeNum);
-    
+    if (badgeNum>0) {
+        _myCount.hidden = NO;
+    }
+    else{
+        _myCount.hidden = YES;
+    }
     for (NSInteger i = 0; i<self.tabBar.items.count; i++)
     {
         UITabBarItem * item = self.tabBar.items[i];
@@ -225,7 +232,11 @@
         if (i==3) {
         if ([[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]>0) {
 //            item.badgeValue =[NSString stringWithFormat:@"%ld",(unsigned long)[[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]];
+            _myCount.hidden = NO;
             }
+        else{
+            _myCount.hidden = YES;
+        }
         }
     }
     if (iOS7)
