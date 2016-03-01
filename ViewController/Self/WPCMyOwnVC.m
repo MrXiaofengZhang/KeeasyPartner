@@ -162,7 +162,7 @@
             if(([[LVTools mToString:result[@"data"][@"messageCount"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"messageCount"]] length]==0)&&
                ([[LVTools mToString:result[@"data"][@"fansStatus"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"fansStatus"]] length]==0)&&
                ([[LVTools mToString:result[@"data"][@"matchCount"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"matchCount"]] length]==0)&&
-               [[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]==0&&
+               [[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]+[ApplyViewController shareController].dataSource.count==0&&
                ([[LVTools mToString:result[@"data"][@"replyCount"]] isEqualToString:@"0"]||[[LVTools mToString:result[@"data"][@"replyCount"]] length]==0)){
               ((LVMainViewController*)(self.tabBarController)).myCount.hidden = YES;
             }else{
