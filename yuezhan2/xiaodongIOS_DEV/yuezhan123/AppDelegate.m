@@ -276,6 +276,8 @@ void UncaughtExceptionHandler(NSException *exception) {
 //iOS7可以使用 此方法的调用时，MainViewController已经被初始化，所以我们已经可以在MainViewController注册推送消息的监听，用于展示对应的视图
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     [[NSNotificationCenter defaultCenter] postNotificationName:@"PresentView" object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:RECEIVEREMOTENOTIFICATION object:nil];
+
 }
 //如果deviceToken获取不到会进入此事件
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
@@ -535,7 +537,6 @@ void UncaughtExceptionHandler(NSException *exception) {
     NSLog(@"%@",notification.alertBody);
     //这里不做跳转处理,只刷新消息个数
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRefreshMessageCount object:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:RECEIVEREMOTENOTIFICATION object:nil];
     //跳转到聊天页面，
     //NSArray *array =[notification.alertBody componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"(:)"]];
     
@@ -560,6 +561,8 @@ void UncaughtExceptionHandler(NSException *exception) {
     [kUserDefault setValue:@"" forKey:KUserAcount];
     [kUserDefault setValue:nil forKey:[NSString stringWithFormat:@"xd%@",[kUserDefault objectForKey:kUserId]]];
     [kUserDefault synchronize];
+    [XGPush setAccount:@"*"];
+    [XGPush registerDeviceStr:[kUserDefault objectForKey:KxgToken]];
     [[NSNotificationCenter defaultCenter] postNotificationName:LOGINSTATECHANGE_NOTIFICATION object:@NO userInfo:nil];
     [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:NO completion:^(NSDictionary *info, EMError *error) {
         //UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"loginAtOtherDevice", @"your login account has been in other places") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
