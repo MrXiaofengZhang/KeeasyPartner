@@ -298,6 +298,7 @@
         [self.mainController showHint:@"自动登录成功"];
         [[EaseMob sharedInstance].chatManager loadDataFromDatabase];
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRefreshMessageCount object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:RECEIVEREMOTENOTIFICATION object:nil];
         //设置badge
         [self.mainController setMessageCount];
     }
