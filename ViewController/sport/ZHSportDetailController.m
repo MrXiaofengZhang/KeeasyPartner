@@ -213,6 +213,24 @@
     }];
 }
 - (void)setZanUserStr{
+    if (zanUserLb == nil) {
+        zanUserLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 1, BOUNDS.size.width-2*mygap, 35.0)];
+        zanUserLb.backgroundColor = [UIColor whiteColor];
+        zanUserLb.font = Content_lbfont;
+        zanUserLb.userInteractionEnabled = YES;
+        zanUserLb.layer.borderWidth = 0.5;
+        zanUserLb.text = @"    暂时还没人点赞哦";
+        zanUserLb.textColor = [UIColor lightGrayColor];
+        zanUserLb.layer.borderColor = [UIColor colorWithRed:0.969 green:0.969 blue:0.969 alpha:1.00].CGColor;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zanListClick)];
+        [zanUserLb addGestureRecognizer:tap];
+    }
+
+    if(agreeArray.count==0){
+        zanUserLb.text = @"    暂时还没人点赞哦";
+        zanUserLb.textColor = [UIColor lightGrayColor];
+        return;
+    }
     NSMutableString *resultStr = [[NSMutableString alloc] initWithString:@"    "];
     NSMutableString *usersStr = [[NSMutableString alloc] initWithCapacity:0];
     for (NSInteger i=0;i<(agreeArray.count>3?3:agreeArray.count);i++) {
@@ -228,17 +246,7 @@
             [usersStr appendString:@","];
         }
     }
-    if (zanUserLb == nil) {
-        zanUserLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 1, BOUNDS.size.width-2*mygap, 35.0)];
-        zanUserLb.backgroundColor = [UIColor whiteColor];
-        zanUserLb.font = Content_lbfont;
-        zanUserLb.userInteractionEnabled = YES;
-        zanUserLb.layer.borderWidth = 0.5;
-        zanUserLb.layer.borderColor = [UIColor colorWithRed:0.969 green:0.969 blue:0.969 alpha:1.00].CGColor;
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zanListClick)];
-        [zanUserLb addGestureRecognizer:tap];
-    }
-    NSRange rang = [resultStr rangeOfString:usersStr];
+        NSRange rang = [resultStr rangeOfString:usersStr];
     NSAttributedString *str = [LVTools attributedStringFromText:resultStr range:rang andColor:NavgationColor];
     zanUserLb.attributedText = str;
 }
@@ -309,6 +317,7 @@
                     NSDictionary *dic = [agreeArray objectAtIndex:i];
                     if ([[LVTools mToString: dic[@"userId"]] isEqualToString:[LVTools mToString: [kUserDefault objectForKey:kUserId]]]) {
                         [agreeArray removeObjectAtIndex:i];
+                        [praiseList removeObjectAtIndex:i];
                         break;
                     }
                 }
@@ -333,6 +342,7 @@
         if ([result[@"status"] boolValue]) {
             btn.selected = !btn.selected;
             [agreeArray addObject:@{@"userName":[kUserDefault objectForKey:kUserName],@"face":[kUserDefault objectForKey:KUserIcon],@"createuser":[kUserDefault objectForKey:kUserId],@"userId":[kUserDefault objectForKey:kUserId],@"createtime":[NSNumber numberWithFloat:[[NSString stringTimeIntervalSince1970] floatValue]]}];
+            [praiseList addObject:@{@"nickName":[kUserDefault objectForKey:kUserName],@"path":[kUserDefault objectForKey:KUserIcon],@"createuser":[kUserDefault objectForKey:kUserId],@"userId":[kUserDefault objectForKey:kUserId],@"createtime":[NSNumber numberWithFloat:[[NSString stringTimeIntervalSince1970] floatValue]]}];
             [self setZanUserStr];
         }
         else{
@@ -903,13 +913,17 @@
 }
 -(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section==3) {
-        if (agreeArray.count>0) {
     if (zanUserLb == nil) {
         zanUserLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 1, BOUNDS.size.width-2*mygap, 35.0)];
         zanUserLb.font = Content_lbfont;
         zanUserLb.backgroundColor = [UIColor whiteColor];
         zanUserLb.layer.borderWidth = 0.5;
+        zanUserLb.text = @"    暂时还没人点赞哦";
+        zanUserLb.textColor = [UIColor lightGrayColor];
         zanUserLb.layer.borderColor = [UIColor colorWithRed:0.969 green:0.969 blue:0.969 alpha:1.00].CGColor;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zanListClick)];
+        [zanUserLb addGestureRecognizer:tap];
+
     }
             if (footView==nil) {
                 footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, BOUNDS.size.width, 50.0)];
@@ -917,10 +931,7 @@
                 [footView addSubview:zanUserLb];
             }
     return footView;
-        }
-        else{
-            return nil;
-        }
+        
     }
     else{
         return nil;
