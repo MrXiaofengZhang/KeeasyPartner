@@ -165,8 +165,6 @@
                     b = [[UIButton alloc] initWithFrame:CGRectMake(BOUNDS.size.width-120, 7.0f, BOUNDS.size.width*(66.0/750.0)*3.5, BOUNDS.size.width*(66.0/750.0))];
                     [b setBackgroundImage:[UIImage imageNamed:@"赛事新-11_05"] forState:UIControlStateNormal];
                     [b setBackgroundImage:[UIImage imageNamed:@"已报名"] forState:UIControlStateSelected];
-                    
-                    
                     [b addTarget:self action:@selector(baomingOnClick:) forControlEvents:UIControlEventTouchUpInside];
 
                 }
