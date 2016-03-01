@@ -455,10 +455,10 @@ static NSInteger page = 0;
                 [self moveToTop];
                 [_sportTableView reloadData];
                 if ([resultDic[@"moreData"] boolValue]) {
-                    
+                    _sportTableView.mj_footer.hidden = NO;
                 }
                 else{
-                    _sportTableView.mj_footer = nil;
+                    _sportTableView.mj_footer.hidden = YES;
                 }
                 //所选赛事状态
 //                if (self.ListDataArray.count==0) {
@@ -505,10 +505,10 @@ static NSInteger page = 0;
                         
                     }
                     if ([resultDic[@"moreData"] boolValue]) {
-                        
+                        self.sportTableView.mj_footer.hidden = NO;
                     }
                     else{
-                        _sportTableView.mj_footer = nil;
+                        _sportTableView.mj_footer.hidden = YES;
                     }
 
                 }
