@@ -23,12 +23,12 @@
     // Do any additional setup after loading the view.
     [self navgationBarLeftReturn];
     [self.view addSubview:self.mTableView];
-    if([self.title hasSuffix:@"赞过"]){
-    UIImageView *typeImag = [[UIImageView alloc] initWithFrame:CGRectMake(mygap*2, mygap*2, 30.0, 30.0)];
-    typeImag.image = [UIImage imageNamed:[NSString stringWithFormat:@"select%@_3",self.type]];
-    NSLog(@"%@",[NSString stringWithFormat:@"select%@_3",self.type]);
-    [self.view addSubview:typeImag];
-    }
+//    if([self.title hasSuffix:@"赞过"]){
+//    UIImageView *typeImag = [[UIImageView alloc] initWithFrame:CGRectMake(mygap*2, mygap*2, 30.0, 30.0)];
+//    typeImag.image = [UIImage imageNamed:[NSString stringWithFormat:@"select%@_3",self.type]];
+//    NSLog(@"%@",[NSString stringWithFormat:@"select%@_3",self.type]);
+//    [self.view addSubview:typeImag];
+//    }
 }
 - (UITableView*)mTableView{
     if (_mTableView == nil) {
@@ -37,15 +37,18 @@
         _mTableView.delegate = self;
         _mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         if([self.title hasSuffix:@"赞过"]){
+            UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, BOUNDS.size.width, 48.0)];
             UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, BOUNDS.size.width, 48.0)];
-//            UIImageView *typeImag = [[UIImageView alloc] initWithFrame:CGRectMake(mygap*2, 4, 40.0, 40.0)];
-//            typeImag.image = [UIImage imageNamed:[NSString stringWithFormat:@"select%@_3",self.type]];
-//            NSLog(@"%@",[NSString stringWithFormat:@"select%@_3",self.type]);
-//            [lab addSubview:typeImag];
             lab.backgroundColor = [UIColor colorWithRed:0.957 green:0.957 blue:0.957 alpha:1.00];
             lab.text = [NSString stringWithFormat:@"            %@",self.sportName];
             lab.textColor = [UIColor lightGrayColor];
-            _mTableView.tableHeaderView =lab;
+            [headView addSubview:lab];
+            
+            UIImageView *typeImag = [[UIImageView alloc] initWithFrame:CGRectMake(mygap*2, mygap*2, 30.0, 30.0)];
+            typeImag.image = [UIImage imageNamed:[NSString stringWithFormat:@"select%@_3",self.type]];
+//            NSLog(@"%@",[NSString stringWithFormat:@"select%@_3",self.type]);
+            [headView addSubview:typeImag];
+            _mTableView.tableHeaderView =headView;
         }
         else{
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, BOUNDS.size.width, 30.0)];
