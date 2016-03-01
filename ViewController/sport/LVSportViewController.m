@@ -109,8 +109,7 @@
     //引导图
     UIScrollView *_scrollView;
     UIPageControl *_pageControl;
-
-
+    NSTimer *timer;
 }
 
 @property (nonatomic, strong)UITableView * sportTableView;
@@ -164,6 +163,10 @@ static NSInteger page = 0;
     else{
         
     }
+}
+- (void)dealloc{
+    [timer invalidate];
+    timer = nil;
 }
 - (void)creatLeftView:(NSString *)str
 {
@@ -785,7 +788,7 @@ static NSInteger page = 0;
 //    _selectSc.backgroundColor = [UIColor redColor];
 }
 - (void)setBanner{
-    _selectSc.contentSize = CGSizeMake(CGRectGetWidth(BOUNDS)*banners.count, 0);
+    _selectSc.contentSize = CGSizeMake(CGRectGetWidth(BOUNDS)*(banners.count+1), 0);
     
     for (NSInteger i=0; i<banners.count; i++) {
         GetMatchListModel *model =[banners objectAtIndex:i];
@@ -794,7 +797,31 @@ static NSInteger page = 0;
         [imageView addTarget:self action:@selector(imageOnClick:) forControlEvents:UIControlEventTouchUpInside];
         [_selectSc addSubview:imageView];
     }
+    GetMatchListModel *model =[banners objectAtIndex:0];
+    UIButton *imageView = [[UIButton alloc] initWithFrame:CGRectMake(banners.count*BOUNDS.size.width, 0, BOUNDS.size.width, BOUNDS.size.width*(321.0/750.0))];
+    [imageView sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,model.matchShow]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"match_plo"]];
+    [imageView addTarget:self action:@selector(imageOnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_selectSc addSubview:imageView];
     _pageView.numberOfPages = banners.count;
+    timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(bannerAnimated) userInfo:nil repeats:YES];
+}
+- (void)bannerAnimated{
+    
+    if (_selectSc.contentOffset.x>=BOUNDS.size.width*banners.count) {
+        _selectSc.contentOffset = CGPointMake(0, 0);
+        [UIView animateWithDuration:0.3f animations:^{
+            CGPoint p = _selectSc.contentOffset;
+            p.x+=BOUNDS.size.width;
+            _selectSc.contentOffset = p;
+        }];
+    }
+    else{
+    [UIView animateWithDuration:0.3f animations:^{
+        CGPoint p = _selectSc.contentOffset;
+        p.x+=BOUNDS.size.width;
+        _selectSc.contentOffset = p;
+    }];
+    }
 }
 - (void)imageOnClick:(UIButton*)btn{
     
@@ -899,8 +926,9 @@ static NSInteger page = 0;
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView == _selectSc) {
-        NSInteger number=   scrollView.contentOffset.x/UISCREENWIDTH;
+        NSInteger number=  (NSInteger)(scrollView.contentOffset.x/UISCREENWIDTH)%banners.count;
         _pageView.currentPage=number;
+       
     }
     if (scrollView.contentOffset.y==0) {
         isScrolling = NO;
