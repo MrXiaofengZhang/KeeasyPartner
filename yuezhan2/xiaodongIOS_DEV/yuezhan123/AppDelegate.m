@@ -284,6 +284,9 @@ void UncaughtExceptionHandler(NSException *exception) {
     //环信配置文件
     [[EaseMob sharedInstance] application:app didFailToRegisterForRemoteNotificationsWithError:err];
 }
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
     //更新未读消息个数
