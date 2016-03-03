@@ -24,6 +24,7 @@
 #import "EmpatyView.h"
 #import "ZHAgreementViewController.h"
 #import "LoginLoginZhViewController.h"
+#import "PhoneListController.h"
 @interface WPCChatHomePageVC () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,SRRefreshDelegate,IChatManagerDelegate,UISearchBarDelegate>
 
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
@@ -273,12 +274,12 @@
         _secondTable.showsVerticalScrollIndicator = NO;
         _secondTable.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         _secondTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        UIView *headview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UISCREENWIDTH, 120+8.0)];
+        UIView *headview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UISCREENWIDTH, 180+8.0)];
         headview.backgroundColor = RGBACOLOR(235, 235, 235, 1);
         
-        NSArray *arr = @[@"new_partner_wpc",@"groupchat_wpc"];
-        NSArray *arr1 = @[@"新的好友",@"群聊"];
-        for (int i = 0; i < 2; i ++) {
+        NSArray *arr = @[@"new_partner_wpc",@"phoneList",@"groupchat_wpc"];
+        NSArray *arr1 = @[@"新的好友",@"手机通讯录",@"群聊"];
+        for (int i = 0; i < arr.count; i ++) {
             UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,5+60*i, UISCREENWIDTH, 60.0)];
             view.tag = 700+i;
             view.backgroundColor = [UIColor whiteColor];
@@ -289,12 +290,12 @@
             img.image = [UIImage imageNamed:arr[i]];
             [view addSubview:img];
             
-            UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(img.right+10, 12, 70, 36.0)];
+            UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(img.right+10, 12, 120, 36.0)];
             lab.text = arr1[i];
             lab.font = Title_font;
             [view addSubview:lab];
             
-            if (i == 0) {
+            if (i != arr.count-1) {
                 UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 59.5, UISCREENWIDTH, 0.5)];
                 line.backgroundColor = RGBACOLOR(222, 222, 222, 1);
                 [view addSubview:line];
@@ -315,6 +316,10 @@
 //        joinVC.hidesBottomBarWhenPushed = YES;
 //        [self.navigationController pushViewController:joinVC animated:YES];
         [self.navigationController pushViewController:[ApplyViewController shareController] animated:YES];
+    }
+    else if (tap.view.tag==701){
+        PhoneListController *phoneVC =[[PhoneListController alloc] init];
+        [self.navigationController pushViewController:phoneVC animated:YES];
     }
     else{
         //群聊
