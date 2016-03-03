@@ -130,7 +130,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(downloadSuccess:) name:DOWNLOAD_COMPLETE_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(downloadFail:) name:DOWNLOAD_FAILED_NOTIFICATION object:nil];
 }
-
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (void)downloadSuccess:(NSNotification *)info {
     NSLog(@"info.userinfo%@",info.userInfo);
     NSString *str = info.userInfo[@"detailFile"];
