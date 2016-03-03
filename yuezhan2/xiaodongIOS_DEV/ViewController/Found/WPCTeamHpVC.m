@@ -215,7 +215,7 @@
         [weakSelf loadTeamListData];
     }];
 //    }
-    if (![[LVTools mToString:[kUserDefault objectForKey:kUserLogin]] isEqualToString:@"1"]) {
+    if (![[LVTools mToString:[kUserDefault objectForKey:kUserLogin]] isEqualToString:@"1"]&&![self.title isEqualToString:@"附近球队"]) {
         return;
     }
     [self.table.mj_header beginRefreshing];
@@ -223,9 +223,9 @@
 }
 
 - (void)loadTeamListData{
-    if (![[LVTools mToString:[kUserDefault objectForKey:kUserLogin]] isEqualToString:@"1"]) {
-        return;
-    }
+//    if (![[LVTools mToString:[kUserDefault objectForKey:kUserLogin]] isEqualToString:@"1"]) {
+//        return;
+//    }
     
     NSMutableDictionary * dic = [LVTools getTokenApp];
     [dic setValue:sportType forKey:@"sportsType"];
@@ -300,7 +300,13 @@
             }
         }
         else{
+            if (![[LVTools mToString:[kUserDefault objectForKey:kUserLogin]] isEqualToString:@"1"]) {
+                [self showHint:@"还没有登录"];
+            }
+            else{
             [self showHint:ErrorWord];
+            
+            }
             [self.table reloadData];
         }
         if (_array.count==0) {

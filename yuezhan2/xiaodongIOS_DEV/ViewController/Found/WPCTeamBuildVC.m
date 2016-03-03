@@ -70,7 +70,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardHide:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
-
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (void)keyBoardAppear:(NSNotification *)notification {
     
     AppDelegate *ap = (AppDelegate *)[[UIApplication sharedApplication] delegate];
