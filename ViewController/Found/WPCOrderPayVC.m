@@ -104,6 +104,7 @@
     [_timer invalidate];
     [_runloopTimer invalidate];
     _runloopTimer = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark -- tableview datasource
