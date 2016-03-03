@@ -141,7 +141,7 @@ static ApplyViewController *controller = nil;
                 if (obj) {
                     if ([obj isKindOfClass:[NSDictionary class]]) {
                         NSDictionary * useeInfo= obj;
-                        cell.titleLabel.text = useeInfo[@""][@""];
+                        cell.titleLabel.text = useeInfo[@"user"][@"nickName"];
                     }
                     else if([obj isKindOfClass:[NearByModel class]]){
                         NearByModel *model = obj;
