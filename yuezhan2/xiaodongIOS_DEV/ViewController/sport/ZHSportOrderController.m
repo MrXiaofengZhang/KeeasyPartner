@@ -27,6 +27,9 @@
     [self.view addSubview:self.mTableView];
     
 }
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:WXPAY_BACK_NOTIFICATION object:nil];
+}
 #pragma mark Getter
 - (UITableView*)mTableView{
     if (_mTableView == nil) {
