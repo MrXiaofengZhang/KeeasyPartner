@@ -167,6 +167,17 @@
 		6B60E8C51C57058A00B9FB1C /* xuxian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B60E8C41C57058A00B9FB1C /* xuxian@2x.png */; };
 		6B60E8C71C57115700B9FB1C /* select1_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B60E8C61C57115700B9FB1C /* select1_3@2x.png */; };
 		6B60E8C91C57228500B9FB1C /* buildBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B60E8C81C57228500B9FB1C /* buildBtn@2x.png */; };
+		6B6131BD1C88051A00D43460 /* phoneList@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6131BC1C88051A00D43460 /* phoneList@2x.png */; };
+		6B6131C01C8808E800D43460 /* PhoneListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6131BF1C8808E800D43460 /* PhoneListController.m */; };
+		6B6131C91C880DD500D43460 /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6131C31C880DD500D43460 /* ChineseString.m */; };
+		6B6131CA1C880DD500D43460 /* CoShuXing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6131C51C880DD500D43460 /* CoShuXing.m */; };
+		6B6131CB1C880DD500D43460 /* File.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B6131C61C880DD500D43460 /* File.c */; };
+		6B6131CC1C880DD500D43460 /* pinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6131C81C880DD500D43460 /* pinyin.m */; };
+		6B6131D51C880DE600D43460 /* Array.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B6131CF1C880DE600D43460 /* Array.mm */; };
+		6B6131D61C880DE600D43460 /* multipy_unicode.dat in Resources */ = {isa = PBXBuildFile; fileRef = 6B6131D01C880DE600D43460 /* multipy_unicode.dat */; };
+		6B6131D71C880DE600D43460 /* SearchCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B6131D21C880DE600D43460 /* SearchCore.mm */; };
+		6B6131D81C880DE600D43460 /* SearchCoreManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B6131D41C880DE600D43460 /* SearchCoreManager.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6B6131EE1C882C1A00D43460 /* PhoneManaddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6131ED1C882C1A00D43460 /* PhoneManaddCell.m */; };
 		6B64934B1AD7A7910033B899 /* ZHAppointSearchMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B64934A1AD7A7910033B899 /* ZHAppointSearchMapController.m */; };
 		6B6644341ACE7CFA00F8AAD6 /* redMarker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6644331ACE7CFA00F8AAD6 /* redMarker@2x.png */; };
 		6B6644361ACE7D9A00F8AAD6 /* callphone1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6644351ACE7D9A00F8AAD6 /* callphone1@2x.png */; };
@@ -1024,6 +1035,25 @@
 		6B60E8C41C57058A00B9FB1C /* xuxian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xuxian@2x.png"; sourceTree = "<group>"; };
 		6B60E8C61C57115700B9FB1C /* select1_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select1_3@2x.png"; sourceTree = "<group>"; };
 		6B60E8C81C57228500B9FB1C /* buildBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buildBtn@2x.png"; sourceTree = "<group>"; };
+		6B6131BC1C88051A00D43460 /* phoneList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phoneList@2x.png"; sourceTree = "<group>"; };
+		6B6131BE1C8808E800D43460 /* PhoneListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneListController.h; sourceTree = "<group>"; };
+		6B6131BF1C8808E800D43460 /* PhoneListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneListController.m; sourceTree = "<group>"; };
+		6B6131C21C880DD500D43460 /* ChineseString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseString.h; sourceTree = "<group>"; };
+		6B6131C31C880DD500D43460 /* ChineseString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseString.m; sourceTree = "<group>"; };
+		6B6131C41C880DD500D43460 /* CoShuXing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoShuXing.h; sourceTree = "<group>"; };
+		6B6131C51C880DD500D43460 /* CoShuXing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoShuXing.m; sourceTree = "<group>"; };
+		6B6131C61C880DD500D43460 /* File.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = File.c; sourceTree = "<group>"; };
+		6B6131C71C880DD500D43460 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		6B6131C81C880DD500D43460 /* pinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pinyin.m; sourceTree = "<group>"; };
+		6B6131CE1C880DE600D43460 /* Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Array.h; sourceTree = "<group>"; };
+		6B6131CF1C880DE600D43460 /* Array.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Array.mm; sourceTree = "<group>"; };
+		6B6131D01C880DE600D43460 /* multipy_unicode.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = multipy_unicode.dat; sourceTree = "<group>"; };
+		6B6131D11C880DE600D43460 /* SearchCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCore.h; sourceTree = "<group>"; };
+		6B6131D21C880DE600D43460 /* SearchCore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SearchCore.mm; sourceTree = "<group>"; };
+		6B6131D31C880DE600D43460 /* SearchCoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCoreManager.h; sourceTree = "<group>"; };
+		6B6131D41C880DE600D43460 /* SearchCoreManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SearchCoreManager.mm; sourceTree = "<group>"; };
+		6B6131EC1C882C1A00D43460 /* PhoneManaddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneManaddCell.h; sourceTree = "<group>"; };
+		6B6131ED1C882C1A00D43460 /* PhoneManaddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneManaddCell.m; sourceTree = "<group>"; };
 		6B6493491AD7A7910033B899 /* ZHAppointSearchMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAppointSearchMapController.h; sourceTree = "<group>"; };
 		6B64934A1AD7A7910033B899 /* ZHAppointSearchMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAppointSearchMapController.m; sourceTree = "<group>"; };
 		6B6644331ACE7CFA00F8AAD6 /* redMarker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redMarker@2x.png"; sourceTree = "<group>"; };
@@ -2803,6 +2833,34 @@
 			path = "umeng_ios_social_sdk_4.2-3.3_arm64_custom";
 			sourceTree = "<group>";
 		};
+		6B6131C11C880DD500D43460 /* AddressModel */ = {
+			isa = PBXGroup;
+			children = (
+				6B6131C21C880DD500D43460 /* ChineseString.h */,
+				6B6131C31C880DD500D43460 /* ChineseString.m */,
+				6B6131C41C880DD500D43460 /* CoShuXing.h */,
+				6B6131C51C880DD500D43460 /* CoShuXing.m */,
+				6B6131C61C880DD500D43460 /* File.c */,
+				6B6131C71C880DD500D43460 /* pinyin.h */,
+				6B6131C81C880DD500D43460 /* pinyin.m */,
+			);
+			path = AddressModel;
+			sourceTree = "<group>";
+		};
+		6B6131CD1C880DE600D43460 /* SearchCore */ = {
+			isa = PBXGroup;
+			children = (
+				6B6131CE1C880DE600D43460 /* Array.h */,
+				6B6131CF1C880DE600D43460 /* Array.mm */,
+				6B6131D01C880DE600D43460 /* multipy_unicode.dat */,
+				6B6131D11C880DE600D43460 /* SearchCore.h */,
+				6B6131D21C880DE600D43460 /* SearchCore.mm */,
+				6B6131D31C880DE600D43460 /* SearchCoreManager.h */,
+				6B6131D41C880DE600D43460 /* SearchCoreManager.mm */,
+			);
+			path = SearchCore;
+			sourceTree = "<group>";
+		};
 		6B6960FC1BE0AD4A00C89AD6 /* ChatView */ = {
 			isa = PBXGroup;
 			children = (
@@ -4007,6 +4065,7 @@
 		84D5A3491B539A0E00DBD75B /* WPCChatImages */ = {
 			isa = PBXGroup;
 			children = (
+				6B6131BC1C88051A00D43460 /* phoneList@2x.png */,
 				84D5A34A1B539A0E00DBD75B /* addPartner_wpc@2x.png */,
 				84D5A34B1B539A0E00DBD75B /* group_chat_wpc@2x.png */,
 				84D5A34C1B539A0E00DBD75B /* right_more_wpc@2x.png */,
@@ -4836,6 +4895,8 @@
 		CBDFDC0F1AC3B6030041BDF5 /* Self */ = {
 			isa = PBXGroup;
 			children = (
+				6B6131CD1C880DE600D43460 /* SearchCore */,
+				6B6131C11C880DD500D43460 /* AddressModel */,
 				6B36A23B1BFAD31E003FBAC2 /* 关注wo_02.png */,
 				6B36A2391BFAD2E5003FBAC2 /* 关注wo_06.png */,
 				6B36A2371BFAD2CF003FBAC2 /* 关注wo_07.png */,
@@ -4878,6 +4939,8 @@
 				6B0A805A1C3D083100E89641 /* EditViewController.m */,
 				6B9ED7EA1C7C2E1100B42500 /* AboutmeController.h */,
 				6B9ED7EB1C7C2E1100B42500 /* AboutmeController.m */,
+				6B6131BE1C8808E800D43460 /* PhoneListController.h */,
+				6B6131BF1C8808E800D43460 /* PhoneListController.m */,
 			);
 			path = Self;
 			sourceTree = "<group>";
@@ -4898,6 +4961,8 @@
 				84A1FD0D1B7C513B00F19302 /* MyTeamCell.m */,
 				6BF09E841C1E61B300C0DF99 /* ScoreCell.h */,
 				6BF09E851C1E61B300C0DF99 /* ScoreCell.m */,
+				6B6131EC1C882C1A00D43460 /* PhoneManaddCell.h */,
+				6B6131ED1C882C1A00D43460 /* PhoneManaddCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -5338,6 +5403,7 @@
 				6B6961E11BE0AD4A00C89AD6 /* chatBar_keyboardSelected.png in Resources */,
 				6B6961CF1BE0AD4A00C89AD6 /* chat_location_annotation_someone.png in Resources */,
 				6B69621C1BE0AD4A00C89AD6 /* chat_sender_audio_playing_full.png in Resources */,
+				6B6131D61C880DE600D43460 /* multipy_unicode.dat in Resources */,
 				6B58B7391BF586A60085614B /* main_tab6_1@2x.png in Resources */,
 				CBD065DF1ADB9CF400371C64 /* commit@2x.png in Resources */,
 				6B7A32401B27E4D600454199 /* 其他@2x.png in Resources */,
@@ -5345,6 +5411,7 @@
 				6B7A5A9E1B26BC5C001D3B91 /* from_2@2x.png in Resources */,
 				6B6961B21BE0AD4A00C89AD6 /* VoiceSearchFeedback016@2x.png in Resources */,
 				6B6961D51BE0AD4A00C89AD6 /* chat_location_preview.png in Resources */,
+				6B6131BD1C88051A00D43460 /* phoneList@2x.png in Resources */,
 				6B6961D71BE0AD4A00C89AD6 /* faceDelete.png in Resources */,
 				6B60E8C31C57038600B9FB1C /* select2_3@2x.png in Resources */,
 				6B69619B1BE0AD4A00C89AD6 /* VoiceSearchFeedback005.png in Resources */,
@@ -5460,6 +5527,7 @@
 				A91127EA1AD3E157004AA2D9 /* PSTGridLayoutSection.m in Sources */,
 				6B7A5A801B26AC7F001D3B91 /* ChineseInclude.m in Sources */,
 				A9C74D9A1AC1581F001BDB82 /* UIImageView+HighlightedWebCache.m in Sources */,
+				6B6131C91C880DD500D43460 /* ChineseString.m in Sources */,
 				3C026E2D1ABA720600582C5C /* ViewController.m in Sources */,
 				A911280B1AD3E157004AA2D9 /* DXRecordView.m in Sources */,
 				A9AAF1A51AC8F2CD0069D181 /* NearByTableViewCell.m in Sources */,
@@ -5494,6 +5562,7 @@
 				3C026E771ABAC11000582C5C /* LVMainViewController.m in Sources */,
 				A91127CA1AD3E157004AA2D9 /* MWTapDetectingImageView.m in Sources */,
 				6B7A32821B27EABF00454199 /* SWCellScrollView.m in Sources */,
+				6B6131D51C880DE600D43460 /* Array.mm in Sources */,
 				84CE0A321B58A83700D402EB /* WPCRefundDetailVC.m in Sources */,
 				A91127C31AD3E157004AA2D9 /* MBProgressHUD+Add.m in Sources */,
 				84CCC2A01B6F5632000EDF4B /* AFDownloadRequestOperation.m in Sources */,
@@ -5566,6 +5635,7 @@
 				A9C74D9F1AC1582B001BDB82 /* UIViewExt.m in Sources */,
 				A91127C11AD3E157004AA2D9 /* Emoji.m in Sources */,
 				A91128041AD3E157004AA2D9 /* ChatViewController.m in Sources */,
+				6B6131CA1C880DD500D43460 /* CoShuXing.m in Sources */,
 				844CB9751BA94F0B00B4B4C8 /* MD5DataSigner.m in Sources */,
 				A9C1EB191AC5568600717FC7 /* LVNearByViewController.m in Sources */,
 				6B52D5891AD39FB2008A4F50 /* UPViewController.mm in Sources */,
@@ -5603,6 +5673,7 @@
 				6BCF8C011AC3C47F003EC03E /* ZHVenueTaocanController.m in Sources */,
 				6B8EA9DE1C7AAE620060206B /* MJRefreshAutoGifFooter.m in Sources */,
 				84D99EC41B46229A006D8825 /* WPCMenberListVC.m in Sources */,
+				6B6131CB1C880DD500D43460 /* File.c in Sources */,
 				6B47DFC11C3FAE16007886B5 /* StateController.m in Sources */,
 				6B7A325B1B27E50C00454199 /* WPCChangePackageVC.m in Sources */,
 				A91127CD1AD3E157004AA2D9 /* DACircularProgressView.m in Sources */,
@@ -5623,6 +5694,7 @@
 				844CB9781BA94F0B00B4B4C8 /* RSADataSigner.m in Sources */,
 				A91127E91AD3E157004AA2D9 /* PSTGridLayoutRow.m in Sources */,
 				A91127E01AD3E157004AA2D9 /* PSTCollectionViewCell.m in Sources */,
+				6B6131EE1C882C1A00D43460 /* PhoneManaddCell.m in Sources */,
 				CB47C98D1AC91D6F00DBCA23 /* SelfInforAddrZhViewController.m in Sources */,
 				6BA19D9F1B42840000FA0D68 /* ZHTimeCell.m in Sources */,
 				A91127D31AD3E157004AA2D9 /* EMSDWebImageManager.m in Sources */,
@@ -5649,6 +5721,7 @@
 				6B52D58F1AD3A742008A4F50 /* ZHOrderController.m in Sources */,
 				CB903D511AE0DB860066CD37 /* ZHClickBigImageView.m in Sources */,
 				6BC9AD7D1ACBCE3A00884CBD /* UIViewController+HUD.m in Sources */,
+				6B6131CC1C880DD500D43460 /* pinyin.m in Sources */,
 				A91127D01AD3E157004AA2D9 /* EMSDWebImageDecoder.m in Sources */,
 				3C1775411ABBD90600CEB3BB /* LVSportItemTableViewCell.m in Sources */,
 				84DBF45B1B3CDF1B007C387B /* WPCComfirmVenueVC.m in Sources */,
@@ -5713,6 +5786,7 @@
 				6B4E06511BE8563C002FA0B7 /* LoginSetController.m in Sources */,
 				A9C74DBD1AC1676F001BDB82 /* GetAppliesModel.m in Sources */,
 				A91127DA1AD3E157004AA2D9 /* UIImage+EMWebP.m in Sources */,
+				6B6131D71C880DE600D43460 /* SearchCore.mm in Sources */,
 				A91127C81AD3E157004AA2D9 /* MWPhoto.m in Sources */,
 				A91127D41AD3E157004AA2D9 /* EMSDWebImagePrefetcher.m in Sources */,
 				6BCF8BFD1AC3C47F003EC03E /* MyVenueView.m in Sources */,
@@ -5721,6 +5795,7 @@
 				A91128341AD3E157004AA2D9 /* EMRemarkImageView.m in Sources */,
 				6B173D841BFF0F420040AD98 /* SportResultController.m in Sources */,
 				CBDFDC251AC3B6030041BDF5 /* SelfSetZhViewController.m in Sources */,
+				6B6131C01C8808E800D43460 /* PhoneListController.m in Sources */,
 				6B7A5A781B26ABF6001D3B91 /* ChineseToPinyinResource.m in Sources */,
 				6B8EA9E01C7AAE620060206B /* MJRefreshAutoStateFooter.m in Sources */,
 				6BCF8BFC1AC3C47F003EC03E /* ZHVenueTaocanCell.m in Sources */,
@@ -5777,6 +5852,7 @@
 				A91128201AD3E157004AA2D9 /* PublicGroupDetailViewController.m in Sources */,
 				84D5A35A1B53B6A100DBD75B /* WPCAddPartnerVC.m in Sources */,
 				A911280C1AD3E157004AA2D9 /* EMChatAudioBubbleView.m in Sources */,
+				6B6131D81C880DE600D43460 /* SearchCoreManager.mm in Sources */,
 				6B08D8691B296C730009010F /* ZHYingzhanController.m in Sources */,
 				A911281C1AD3E157004AA2D9 /* GroupBansViewController.m in Sources */,
 				84CCF6D61B661B59006736A0 /* WPCImageView.m in Sources */,
