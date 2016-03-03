@@ -7,6 +7,11 @@
 //
 
 
+
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import "Global.h"
 #import "Connect.h"
 
@@ -24,14 +29,12 @@
 #import "UIViewController+HUD.h"
 
 #import <Availability.h>
-
-#ifndef __IPHONE_4_0
-#warning "This project uses features only available in iOS SDK 4.0 and later."
-#endif
-
-#ifdef __OBJC__
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
+#import "WCAlertView.h"
+#import "UIViewController+HUD.h"
+#import "UIViewController+DismissKeyboard.h"
+#import "NSString+Valid.h"
+#import "EaseMob.h"
+#import "MBProgressHUD+Add.h"
 #endif
 
 
@@ -57,12 +60,7 @@
 //主线程
 #define __async_main__ dispatch_async(dispatch_get_main_queue()
 #define __async_opt__  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-#import "WCAlertView.h"
-#import "UIViewController+HUD.h"
-#import "UIViewController+DismissKeyboard.h"
-#import "NSString+Valid.h"
-#import "EaseMob.h"
-#import "MBProgressHUD+Add.h"
+
 
 #ifndef yuezhan123_yuezhan_pch
 #define yuezhan123_yuezhan_pch
