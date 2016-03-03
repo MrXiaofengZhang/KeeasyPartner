@@ -64,7 +64,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wxpayResult:) name:WXPAY_BACK_NOTIFICATION object:nil];
 
 }
-
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (void)loadOrderList{
     NSMutableDictionary *dic = [LVTools getTokenApp];
     [dic setObject:[kUserDefault valueForKey:kUserId]  forKey:@"uid"];
