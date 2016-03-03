@@ -83,6 +83,7 @@
     
     orderNumLb  =[[UILabel alloc] initWithFrame:CGRectMake(UISCREENWIDTH-48.0, 48.0/3, 48.0/3, 48.0/3)];
     orderNumLb.layer.cornerRadius = 48.0/6;
+    orderNumLb.layer.masksToBounds = YES;
     orderNumLb.textAlignment = NSTextAlignmentCenter;
     orderNumLb.backgroundColor = [UIColor redColor];
     orderNumLb.font = [UIFont systemFontOfSize:10];
