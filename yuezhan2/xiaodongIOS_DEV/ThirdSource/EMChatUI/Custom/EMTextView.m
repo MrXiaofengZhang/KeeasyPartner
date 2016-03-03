@@ -28,7 +28,9 @@
     }
     return self;
 }
-
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 #pragma mark - super
 
 - (void)setTextColor:(UIColor *)textColor
