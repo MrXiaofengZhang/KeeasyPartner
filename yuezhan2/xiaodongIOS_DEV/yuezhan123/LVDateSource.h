@@ -168,9 +168,17 @@
  */
 #define getFriendList @"app/personal/getFriendList"
 /**
- *  获取一组用户信息
+ *  通过一组ID获取一组用户信息
  */
 #define getUsersByIds @"app/personal/getUsersByIds"
+/**
+ * 通过一组手机号获取一组用户信息
+ */
+#define getUsersByMobiles @"app/personal/getUsersByMobiles"
+/**
+ * 添加同叙录好友
+ */
+#define sendInvitationMessage @"app/user/sendInvitationMessage"
 /**
  *  新的好友
  */
