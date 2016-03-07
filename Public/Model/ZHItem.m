@@ -10,6 +10,6 @@
 
 @implementation ZHItem
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
-    NSLog(@"ZHItem中没有定义的key：%@",key);
+//    NSLog(@"ZHItem中没有定义的key：%@",key);
 }
 @end
