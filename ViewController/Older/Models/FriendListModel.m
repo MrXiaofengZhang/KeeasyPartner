@@ -11,7 +11,7 @@
 @implementation FriendListModel
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
-    NSLog(@"FriendListModel中没有定义的key:%@",key);
+//    NSLog(@"FriendListModel中没有定义的key:%@",key);
 }
 
 @end
