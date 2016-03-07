@@ -32,5 +32,6 @@
 @property (nonatomic, strong) NSDictionary *citiesDictionary;
 @property (nonatomic, strong) LVMainViewController *mainController;
 @property (nonatomic) BOOL isLaunchedByNotification;//是否通过点击通知进入应用
+
 @end
 

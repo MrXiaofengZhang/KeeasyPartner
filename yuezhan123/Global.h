@@ -155,9 +155,11 @@
 #define NotificationRefreshAppoint @"refreshAppoint"//个人信息更改时,刷新约战首页
 #define NotificationRefreshOldList @"refreshFriendList"//刷新好友列表
 #define NotificationNewApply @"newfriendApply"//好友申请通知
+
 #define LaunchFirst @"LaunchFirst"
 #define CityCacheTime @"CityCacheTime"
 #define SchoolCacheTime @"SchoolCacheTime"
+#define PhoneListCount @"PhoneListCount"
 #define ARROW_CHANGE_DIRECTION_NOTIFICATION @"arrow_change_direction_notification"//改变首页地点那个方向箭头
 #define SPORT_TYPE_CHANGE_NOTIFICATION @"sportTypeChangeNotification"//首页运动类型那个collection消失时的通知
 #define LOCATION_UPDATE_NOTIFICATION @"location_update_notification"//首页默认城市通知
