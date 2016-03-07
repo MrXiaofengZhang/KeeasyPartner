@@ -10,6 +10,6 @@
 
 @implementation TeamModel
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
-    NSLog(@"TeamModel中没有定义的key：%@",key);
+//    NSLog(@"TeamModel中没有定义的key：%@",key);
 }
 @end
