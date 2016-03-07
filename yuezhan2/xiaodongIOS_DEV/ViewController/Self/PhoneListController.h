@@ -9,4 +9,5 @@
 #import "BaseViewController.h"
 
 @interface PhoneListController : BaseViewController
+@property (nonatomic,assign) BOOL hasRightBtn;
 @end
