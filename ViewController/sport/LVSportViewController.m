@@ -82,6 +82,8 @@
 #import "ZHSportDetailController.h"
 #import "CityTableViewController.h"
 #import "CitySchoolsController.h"
+#import "LVMainViewController.h"
+#import <AddressBook/AddressBook.h>
 #define LeftWidth 10.0
 #define ItemWidth ((CGRectGetWidth(BOUNDS)-2*LeftWidth)/5)
 #define SiftWidth (CGRectGetWidth(BOUNDS)/4)
@@ -156,6 +158,8 @@ static NSInteger page = 0;
         //初始化配置
         [kUserDefault setObject:@"0" forKey:CityCacheTime];
         [kUserDefault setObject:@"0" forKey:SchoolCacheTime];
+        [kUserDefault setObject:[NSNumber numberWithInteger:0] forKey:PhoneListCount];
+        [self getNPeople];
         [kUserDefault setBool:YES forKey:LaunchFirst];
         [kUserDefault synchronize];
         [self loadLandingView];
@@ -164,6 +168,44 @@ static NSInteger page = 0;
         
     }
 }
+- (void)getNPeople{
+    int __block tip = 0;
+    ABAddressBookRef addressBooks = nil;
+    
+    addressBooks =  ABAddressBookCreateWithOptions(NULL, NULL);
+    //获取通讯录权限
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    ABAddressBookRequestAccessWithCompletion(addressBooks, ^(bool granted, CFErrorRef error) {
+        if (!granted) {
+            tip = 1;
+        }
+        dispatch_semaphore_signal(sema);
+    });
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+    if(tip){
+        //用户拒绝访问通讯录
+        //        UILabel *tipLb = [[UILabel alloc] initWithFrame:CGRectMake(mygap*2, 0, BOUNDS.size.width-4*mygap, 50)];
+        //        tipLb.center = self.view.center;
+        //        tipLb.numberOfLines = 0;
+        //        tipLb.textColor = [UIColor lightGrayColor];
+        //        tipLb.text = @"请您设置允许APP访问您的通讯录\n设置>隐私>通讯录";
+        //        tipLb.textAlignment = NSTextAlignmentCenter;
+        //        [self.view addSubview:tipLb];
+    }
+    else{
+        //获取通讯录中的所有人
+        //        CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBooks);
+        
+        //通讯录中人数
+        CFIndex nPeople = ABAddressBookGetPersonCount(addressBooks);
+        NSInteger oldnPeople = [[kUserDefault objectForKey:PhoneListCount] integerValue];
+        if (nPeople>oldnPeople) {
+            self.newPeopleCount = nPeople-oldnPeople;
+            ((LVMainViewController*)(self.navigationController.tabBarController)).myCount.hidden = NO;
+        }
+    }
+}
+
 - (void)dealloc{
     [timer invalidate];
     timer = nil;
@@ -672,7 +714,7 @@ static NSInteger page = 0;
     }
 }
 - (void)showSeleted{
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"全部",@"篮球",@"足球", nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"全部",@"篮球",@"足球",@"其它", nil];
     [sheet showInView:self.view];
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -690,6 +732,12 @@ static NSInteger page = 0;
 //        足球
         _siftSportType = @"2";
         [rightBtn setBackgroundImage:[UIImage imageNamed:@"select2_3"] forState:UIControlStateNormal];
+        [self loadDefaultData:0];
+    }
+    else if (buttonIndex == 3){
+//       其它
+        _siftSportType = @"4";
+        [rightBtn setBackgroundImage:[UIImage imageNamed:@"select3_3"] forState:UIControlStateNormal];
         [self loadDefaultData:0];
     }
     else{

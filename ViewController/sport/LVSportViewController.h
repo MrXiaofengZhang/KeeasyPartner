@@ -12,5 +12,5 @@
 #import "BaseViewController.h"
 
 @interface LVSportViewController : BaseViewController
-
+@property (nonatomic, assign) NSInteger newPeopleCount;
 @end
