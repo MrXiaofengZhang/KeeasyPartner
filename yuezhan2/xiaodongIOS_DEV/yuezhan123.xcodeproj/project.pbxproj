@@ -106,6 +106,8 @@
 		6B2D4DF61BDA1AF900C9A7F0 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2D4DED1BDA1AF900C9A7F0 /* libWeChatSDK.a */; };
 		6B2D998A1B461EE900C8A2A3 /* ZHNearXuanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D99891B461EE900C8A2A3 /* ZHNearXuanController.m */; };
 		6B31C4251C3BB600005DF062 /* WebCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B31C4241C3BB600005DF062 /* WebCell.m */; };
+		6B361AC71C896FF8007CD920 /* sadface@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B361AC61C896FF8007CD920 /* sadface@2x.png */; };
+		6B361AC91C897085007CD920 /* select3_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B361AC81C897085007CD920 /* select3_3@2x.png */; };
 		6B36A22C1BFABC37003FBAC2 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B36A22B1BFABC37003FBAC2 /* ListViewController.m */; };
 		6B36A2381BFAD2CF003FBAC2 /* 关注wo_07.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B36A2371BFAD2CF003FBAC2 /* 关注wo_07.png */; };
 		6B36A23A1BFAD2E5003FBAC2 /* 关注wo_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B36A2391BFAD2E5003FBAC2 /* 关注wo_06.png */; };
@@ -956,6 +958,8 @@
 		6B2D99891B461EE900C8A2A3 /* ZHNearXuanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHNearXuanController.m; sourceTree = "<group>"; };
 		6B31C4231C3BB600005DF062 /* WebCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebCell.h; sourceTree = "<group>"; };
 		6B31C4241C3BB600005DF062 /* WebCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebCell.m; sourceTree = "<group>"; };
+		6B361AC61C896FF8007CD920 /* sadface@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sadface@2x.png"; sourceTree = "<group>"; };
+		6B361AC81C897085007CD920 /* select3_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select3_3@2x.png"; sourceTree = "<group>"; };
 		6B36A22A1BFABC37003FBAC2 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		6B36A22B1BFABC37003FBAC2 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		6B36A2371BFAD2CF003FBAC2 /* 关注wo_07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关注wo_07.png"; sourceTree = "<group>"; };
@@ -2514,6 +2518,7 @@
 		3C026E781ABAD36200582C5C /* LV_SelectBtnImg */ = {
 			isa = PBXGroup;
 			children = (
+				6B361AC81C897085007CD920 /* select3_3@2x.png */,
 				6B1652451C5A2ADC00E660E7 /* back@2x.png */,
 				6B60E8C61C57115700B9FB1C /* select1_3@2x.png */,
 				6B60E8C21C57038600B9FB1C /* select2_3@2x.png */,
@@ -4895,6 +4900,7 @@
 		CBDFDC0F1AC3B6030041BDF5 /* Self */ = {
 			isa = PBXGroup;
 			children = (
+				6B361AC61C896FF8007CD920 /* sadface@2x.png */,
 				6B6131CD1C880DE600D43460 /* SearchCore */,
 				6B6131C11C880DD500D43460 /* AddressModel */,
 				6B36A23B1BFAD31E003FBAC2 /* 关注wo_02.png */,
@@ -5208,6 +5214,7 @@
 				6B7A32471B27E4D600454199 /* 游泳@2x.png in Resources */,
 				6B5D85D81C4CBD2B005D76BF /* lv_1.png in Resources */,
 				6B6962071BE0AD4A00C89AD6 /* messageToolbarBg@2x.png in Resources */,
+				6B361AC91C897085007CD920 /* select3_3@2x.png in Resources */,
 				6B6961BA1BE0AD4A00C89AD6 /* VoiceSearchFeedback020@2x.png in Resources */,
 				6B6961CD1BE0AD4A00C89AD6 /* chatBar_textBg.png in Resources */,
 				6B6961ED1BE0AD4A00C89AD6 /* chatBar_recordSelectedBg.png in Resources */,
@@ -5399,6 +5406,7 @@
 				6B7A323B1B27E4D600454199 /* personal_info@2x.png in Resources */,
 				6B09C73B1C48F15900F648B3 /* leader@2x.png in Resources */,
 				6B58B7311BF580900085614B /* owner@2x.png in Resources */,
+				6B361AC71C896FF8007CD920 /* sadface@2x.png in Resources */,
 				6B8EA9E71C7AAE620060206B /* MJRefresh.bundle in Resources */,
 				6B6961E11BE0AD4A00C89AD6 /* chatBar_keyboardSelected.png in Resources */,
 				6B6961CF1BE0AD4A00C89AD6 /* chat_location_annotation_someone.png in Resources */,
