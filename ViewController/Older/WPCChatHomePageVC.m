@@ -25,12 +25,14 @@
 #import "ZHAgreementViewController.h"
 #import "LoginLoginZhViewController.h"
 #import "PhoneListController.h"
+#import "LVSportViewController.h"
 @interface WPCChatHomePageVC () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,SRRefreshDelegate,IChatManagerDelegate,UISearchBarDelegate>
 
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
 @property (nonatomic, strong) UITableView *secondTable;
 @property (nonatomic, strong) NSMutableArray *dataArray;//secondTable
-@property (nonatomic, strong) UILabel *countlab;
+@property (nonatomic, strong) UILabel *countlab;//新好友申请
+@property (nonatomic, strong) UILabel *countlab1;//新联系人
 
 
 @property (strong, nonatomic) NSMutableArray        *dataSource;//tableView
@@ -109,6 +111,7 @@
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar addSubview:_segmentControl];
     [self refreshMessageCount];
+    [self countlab1];
     if(![[LVTools mToString:[kUserDefault objectForKey:kUserLogin]] isEqualToString:@"1"]){
     [WCAlertView showAlertWithTitle:nil message:@"您还未登录,不能查看聊天信息" customizationBlock:nil completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
         //
@@ -261,9 +264,23 @@
         _countlab.font = Content_lbfont;
         _countlab.textAlignment = NSTextAlignmentCenter;
         _countlab.hidden = YES;
-        _countlab.text = [NSString stringWithFormat:@"%ld",(long)[ApplyViewController shareController].dataSource.count];
     }
+     _countlab.text = [NSString stringWithFormat:@"%ld",(long)[ApplyViewController shareController].dataSource.count];
     return _countlab;
+}
+- (UILabel *)countlab1 {
+    if (!_countlab1) {
+        _countlab1 = [[UILabel alloc] initWithFrame:CGRectMake(140, 20, 20, 20)];
+        _countlab1.backgroundColor = [UIColor redColor];
+        _countlab1.textColor = [UIColor whiteColor];
+        _countlab1.layer.cornerRadius = _countlab.width/2.0;
+        _countlab1.layer.masksToBounds = YES;
+        _countlab1.font = Content_lbfont;
+        _countlab1.textAlignment = NSTextAlignmentCenter;
+        _countlab1.hidden = YES;
+    }
+    _countlab1.text = [NSString stringWithFormat:@"%ld",((LVSportViewController*)[((UINavigationController*)[self.navigationController.tabBarController.viewControllers objectAtIndex:0]).viewControllers objectAtIndex:0]).newPeopleCount];
+    return _countlab1;
 }
 
 - (UITableView *)secondTable {
@@ -299,8 +316,13 @@
                 UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 59.5, UISCREENWIDTH, 0.5)];
                 line.backgroundColor = RGBACOLOR(222, 222, 222, 1);
                 [view addSubview:line];
+                if (i==1) {
+                    [view addSubview:self.countlab1];
+                }
+                else if (i==2){
+                    [view addSubview:self.countlab];
+                }
                 
-                [view addSubview:self.countlab];
             }
             [headview addSubview:view];
         }
