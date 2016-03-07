@@ -28,6 +28,7 @@
 #import "ApplyViewController.h"
 #import "AboutmeController.h"
 #import "LVMainViewController.h"
+#import "LVSportViewController.h"
 @interface WPCMyOwnVC () <UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 {
     BOOL isSignIn;//判断是否签到过
@@ -100,9 +101,11 @@
 }
 - (void)refreshMessageCount{
     NSInteger unred = [[EaseMob sharedInstance].chatManager totalUnreadMessagesCount]+[ApplyViewController shareController].dataSource.count;
-    if (unred != 0) {
+    //和新联系人
+    NSInteger newCount = ((LVSportViewController*)[((UINavigationController*)[self.navigationController.tabBarController.viewControllers objectAtIndex:0]).viewControllers objectAtIndex:0]).newPeopleCount;
+    if (unred+newCount != 0) {
         countlab1.hidden = NO;
-        countlab1.text = [NSString stringWithFormat:@"%d",(int)unred];
+        countlab1.text = [NSString stringWithFormat:@"%d",(int)(unred+newCount)];
         ((LVMainViewController*)(self.tabBarController)).myCount.hidden = NO;
     }
     else{
