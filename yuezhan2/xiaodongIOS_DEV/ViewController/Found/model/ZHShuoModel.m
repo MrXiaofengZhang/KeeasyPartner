@@ -10,6 +10,6 @@
 
 @implementation ZHShuoModel
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
-    NSLog(@"ZHShuoModel中没有定义的key：%@",key);
+//    NSLog(@"ZHShuoModel中没有定义的key：%@",key);
 }
 @end
