@@ -15,6 +15,7 @@
 
 - (void)showHint:(NSString *)hint;
 - (void)showHint:(NSString *)hint andHeight:(CGFloat)height;
+- (void)show:(NSString *)text icon:(NSString *)icon view:(UIView *)view;
 /**
  *  添加返回按钮
  */
