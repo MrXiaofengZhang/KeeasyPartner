@@ -9,6 +9,7 @@
 #import "LoginSchoolController.h"
 #import "CityListViewController.h"
 #import "SchoolsController.h"
+#import "PhoneListController.h"
 #define leftBoard_w 20.0f
 @interface LoginSchoolController ()<UIPickerViewDataSource,UIPickerViewDelegate,CityDelegate>{
     UIButton *finishBtn;
@@ -155,10 +156,13 @@
 //                      }
 //                  } onQueue:nil];
 
-                 [WCAlertView showAlertWithTitle:@"注册成功,请登录" message:nil customizationBlock:nil completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
-                     //
-                     [self.navigationController popToRootViewControllerAnimated:YES];
-                 } cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//                 [WCAlertView showAlertWithTitle:@"注册成功,请登录" message:nil customizationBlock:nil completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
+//                     //
+//                     [self.navigationController popToRootViewControllerAnimated:YES];
+//                 } cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                 PhoneListController *phoneVC =[[PhoneListController alloc] init];
+                 phoneVC.hasRightBtn = YES;
+                 [self.navigationController pushViewController:phoneVC animated:YES];
              }
              else{
                  [self showHint:result[@"info"]];
