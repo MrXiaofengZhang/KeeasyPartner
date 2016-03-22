@@ -281,6 +281,7 @@
             [kUserDefault setValue:dic[@"data"][@"path"] forKey:KUserIcon];
             [kUserDefault setValue:dic[@"data"][@"user"][@"schoolId"] forKey:KUserSchoolId];
             [kUserDefault setValue:dic[@"data"][@"schoolName"] forKey:KUserSchoolName];
+            [kUserDefault setValue:dic[@"data"][@"user"][@"enrollment"] forKey:KUserYear];
             [kUserDefault setValue:@"1" forKey:kUserLogin];
             
             [[NSUserDefaults standardUserDefaults]synchronize];
