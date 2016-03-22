@@ -29,6 +29,7 @@
 #import "SportResultController.h"
 #import "UMSocial.h"
 #import "WPCMyOwnVC.h"
+#import "PersonSignController.h"
 #define TileInitialTag 100000
 @interface ZHSportDetailController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIWebViewDelegate,UMSocialUIDelegate>{
     NSMutableArray *agreeArray;
@@ -1071,6 +1072,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)baomingOnClick:(UIButton*)btn{
+    
+    
     NSLog(@"我要报名");
     NSString *islogin = [kUserDefault objectForKey:kUserLogin];
     if (![islogin isEqualToString:@"1"]) {
@@ -1092,6 +1095,14 @@
             //报名已截止且未参赛
         }
     else{
+        if ([[LVTools mToString: self.matchInfo.signupWay] isEqualToString:@"2"]) {
+            //个人报名
+            PersonSignController *personVC =[[PersonSignController alloc] init];
+            personVC.title = @"个人报名";
+            [self.navigationController pushViewController:personVC animated:YES];
+        }
+        else{
+            //团队报名
     ZHInviteFriendController *inviteVC =[[ZHInviteFriendController alloc] init];
     inviteVC.type = @"2";
         inviteVC.matchType = [LVTools mToString:self.matchInfo.matchType];
@@ -1106,6 +1117,7 @@
     inviteVC.floorCount = [[[self.matchInfo.userlimit componentsSeparatedByString:@"-"] objectAtIndex:0] integerValue];
     inviteVC.topCount = [[[self.matchInfo.userlimit componentsSeparatedByString:@"-"] objectAtIndex:1] integerValue];
     [self.navigationController pushViewController:inviteVC animated:YES];
+    }
     }
     }
     }
