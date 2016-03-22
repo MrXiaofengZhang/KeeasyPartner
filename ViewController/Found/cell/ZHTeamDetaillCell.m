@@ -17,7 +17,7 @@
     [super layoutSubviews];
     self.textLabel.frame = CGRectMake(0, mygap, BOUNDS.size.width*.3, 34);
     self.detailTextLabel.frame = CGRectMake(BOUNDS.size.width*.36, mygap, BOUNDS.size.width*(1-.37), 44-mygap*2);
-    self.separatorInset = UIEdgeInsetsMake(0, BOUNDS.size.width*.36, 0, 0);
+//    self.separatorInset = UIEdgeInsetsMake(0, BOUNDS.size.width*.36, 0, 0);
     self.textLabel.textAlignment = NSTextAlignmentRight;
     self.textLabel.font = Btn_font;
     self.detailTextLabel.font = Btn_font;
