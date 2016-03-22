@@ -33,7 +33,7 @@
 #define KUserRealName @"realName"//真实姓名
 #define KUserSchoolName   @"userSchoolName"//学校
 #define KUserSchoolId   @"userSchoolId"
-
+#define KUserYear @"userYear"
 
 
 
