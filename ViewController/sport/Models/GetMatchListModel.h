@@ -115,4 +115,6 @@
 @property (nonatomic, strong)NSString * messageStatus;
 @property (nonatomic, strong)NSString * banner;
 @property (nonatomic, strong)NSString * detailsShow;
+@property (nonatomic, copy)NSString *signupWay;//报名方式
+//@property (nonatomic, copy)NSString *
 @end
