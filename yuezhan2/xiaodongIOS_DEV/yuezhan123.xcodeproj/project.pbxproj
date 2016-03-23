@@ -28,6 +28,11 @@
 		6B01C8491C589FF200875EC3 /* jubao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B01C8481C589FF200875EC3 /* jubao@2x.png */; };
 		6B01C84B1C589FFB00875EC3 /* deleteF@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B01C84A1C589FFB00875EC3 /* deleteF@2x.png */; };
 		6B01C84D1C58A04A00875EC3 /* more2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B01C84C1C58A04A00875EC3 /* more2@2x.png */; };
+		6B0438351CA281D400FA540B /* typeIcon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0438341CA281D400FA540B /* typeIcon2@2x.png */; };
+		6B0438371CA2831200FA540B /* type4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0438361CA2831200FA540B /* type4@2x.png */; };
+		6B0438391CA2841A00FA540B /* 球队信息4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0438381CA2841A00FA540B /* 球队信息4.png */; };
+		6B04383B1CA2843500FA540B /* 参赛人员4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B04383A1CA2843500FA540B /* 参赛人员4.png */; };
+		6B04383D1CA2844F00FA540B /* 赛事赛程4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B04383C1CA2844F00FA540B /* 赛事赛程4.png */; };
 		6B055C2E1B46554200A692DD /* ZHTeamDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B055C2D1B46554200A692DD /* ZHTeamDetailController.m */; };
 		6B0563831C4E004D001E285E /* 赛事新-11-_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0563821C4E004D001E285E /* 赛事新-11-_02.png */; };
 		6B0563851C4E0133001E285E /* 明星校队说明.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0563841C4E0133001E285E /* 明星校队说明.png */; };
@@ -842,6 +847,11 @@
 		6B01C8481C589FF200875EC3 /* jubao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jubao@2x.png"; sourceTree = "<group>"; };
 		6B01C84A1C589FFB00875EC3 /* deleteF@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deleteF@2x.png"; sourceTree = "<group>"; };
 		6B01C84C1C58A04A00875EC3 /* more2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more2@2x.png"; sourceTree = "<group>"; };
+		6B0438341CA281D400FA540B /* typeIcon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "typeIcon2@2x.png"; sourceTree = "<group>"; };
+		6B0438361CA2831200FA540B /* type4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type4@2x.png"; sourceTree = "<group>"; };
+		6B0438381CA2841A00FA540B /* 球队信息4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "球队信息4.png"; sourceTree = "<group>"; };
+		6B04383A1CA2843500FA540B /* 参赛人员4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "参赛人员4.png"; sourceTree = "<group>"; };
+		6B04383C1CA2844F00FA540B /* 赛事赛程4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "赛事赛程4.png"; sourceTree = "<group>"; };
 		6B055C2C1B46554200A692DD /* ZHTeamDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHTeamDetailController.h; sourceTree = "<group>"; };
 		6B055C2D1B46554200A692DD /* ZHTeamDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHTeamDetailController.m; sourceTree = "<group>"; };
 		6B0563821C4E004D001E285E /* 赛事新-11-_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "赛事新-11-_02.png"; sourceTree = "<group>"; };
@@ -2697,6 +2707,9 @@
 		6B2A27E31BF973AD00CA2229 /* sportimages */ = {
 			isa = PBXGroup;
 			children = (
+				6B04383C1CA2844F00FA540B /* 赛事赛程4.png */,
+				6B04383A1CA2843500FA540B /* 参赛人员4.png */,
+				6B0438381CA2841A00FA540B /* 球队信息4.png */,
 				6B0563821C4E004D001E285E /* 赛事新-11-_02.png */,
 				6B09FA181C350F87008DC003 /* 已报名.png */,
 				6B16EA4D1C338AD6001BA692 /* 参赛人员1.png */,
@@ -3671,6 +3684,8 @@
 		6B983FB81C1A772E005DD65E /* cellImg */ = {
 			isa = PBXGroup;
 			children = (
+				6B0438361CA2831200FA540B /* type4@2x.png */,
+				6B0438341CA281D400FA540B /* typeIcon2@2x.png */,
 				6B0E83C81C3E018B00D3289B /* 截止报名.png */,
 				6B0A80571C3CBB5000E89641 /* select.png */,
 				6B0A80551C3CBB4A00E89641 /* selected.png */,
@@ -5227,6 +5242,7 @@
 				6B6961BF1BE0AD4A00C89AD6 /* call_silence.png in Resources */,
 				6B7A32371B27E4D600454199 /* his_group@2x.png in Resources */,
 				6B7A5AA01B26BC5C001D3B91 /* from_4@2x.png in Resources */,
+				6B0438391CA2841A00FA540B /* 球队信息4.png in Resources */,
 				6B6961AC1BE0AD4A00C89AD6 /* VoiceSearchFeedback013@2x.png in Resources */,
 				6B6961D91BE0AD4A00C89AD6 /* imageDownloadFail@2x.png in Resources */,
 				6B8EA9ED1C7ADBF20060206B /* blue_search@2x.png in Resources */,
@@ -5312,6 +5328,7 @@
 				6B69620E1BE0AD4A00C89AD6 /* chat_receiver_audio_playing003.png in Resources */,
 				6B7071311B5753850023F2CA /* 4-5.png in Resources */,
 				A91127ED1AD3E157004AA2D9 /* sr_refresh@2X.png in Resources */,
+				6B0438371CA2831200FA540B /* type4@2x.png in Resources */,
 				6B6961DC1BE0AD4A00C89AD6 /* chatBar_face@2x.png in Resources */,
 				6B6961F31BE0AD4A00C89AD6 /* chatBar_colorMore_location@2x.png in Resources */,
 				6B7A32391B27E4D600454199 /* participated_appoint@2x.png in Resources */,
@@ -5358,6 +5375,7 @@
 				84E5F9671B54AC230031685F /* new_partner_wpc@2x.png in Resources */,
 				6B6962021BE0AD4A00C89AD6 /* chatBar_more_locationSelected@2x.png in Resources */,
 				6B6962061BE0AD4A00C89AD6 /* chatBar_more_photoSelected@2x.png in Resources */,
+				6B0438351CA281D400FA540B /* typeIcon2@2x.png in Resources */,
 				6BCF8C2E1AC3C915003EC03E /* arrow@2x.png in Resources */,
 				84BF02521B58E63900184F04 /* 攀岩@2x.png in Resources */,
 				6B5D85DA1C4CBD33005D76BF /* lv_2.png in Resources */,
@@ -5390,6 +5408,7 @@
 				6B2D4DD91BDA1AC500C9A7F0 /* UMSCommentDetailController.xib in Resources */,
 				6BE905801B7ADECD0027394C /* systemIcon@2x.png in Resources */,
 				84BF02561B58E63900184F04 /* 射击@2x.png in Resources */,
+				6B04383B1CA2843500FA540B /* 参赛人员4.png in Resources */,
 				6B983FC11C1A772E005DD65E /* typeIcon@2x.png in Resources */,
 				6B1AEF3C1C4645B500B03A7C /* waddPartner_wpc@2x.png in Resources */,
 				6B6961FF1BE0AD4A00C89AD6 /* chatBar_more_location.png in Resources */,
@@ -5445,6 +5464,7 @@
 				6B7A32431B27E4D600454199 /* 射箭@2x.png in Resources */,
 				6B69620C1BE0AD4A00C89AD6 /* chat_receiver_audio_playing002.png in Resources */,
 				6B7A32491B27E4D600454199 /* 篮球@2x.png in Resources */,
+				6B04383D1CA2844F00FA540B /* 赛事赛程4.png in Resources */,
 				6B0563851C4E0133001E285E /* 明星校队说明.png in Resources */,
 				84BF02541B58E63900184F04 /* 全部@2x.png in Resources */,
 				6BD8BDBC1B60BA3C008A4DB3 /* groupPrivateHeader@2x.png in Resources */,
