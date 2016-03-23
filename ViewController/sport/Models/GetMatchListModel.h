@@ -116,5 +116,6 @@
 @property (nonatomic, strong)NSString * banner;
 @property (nonatomic, strong)NSString * detailsShow;
 @property (nonatomic, copy)NSString *signupWay;//报名方式
-//@property (nonatomic, copy)NSString *
+@property (nonatomic, copy)NSString *needAcademic;//学院
+@property (nonatomic, copy)NSString *needDepartment;//系
 @end
