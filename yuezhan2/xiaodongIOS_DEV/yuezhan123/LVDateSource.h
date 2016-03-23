@@ -449,6 +449,7 @@
  */
 #define matchSignup @"app/order/matchSignup"
 
+#define singleSignUp @"app/match/singleSignUp"
 /**
  【判断是否绑定QQ用户信息】
  CPassportParam{
