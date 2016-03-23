@@ -1099,6 +1099,7 @@
             //个人报名
             PersonSignController *personVC =[[PersonSignController alloc] init];
             personVC.title = @"个人报名";
+            personVC.matchInfo = self.matchInfo;
             [self.navigationController pushViewController:personVC animated:YES];
         }
         else{
