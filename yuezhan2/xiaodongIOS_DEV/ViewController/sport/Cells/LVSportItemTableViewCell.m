@@ -113,8 +113,11 @@
         if ([[LVTools mToString: model.type] isEqualToString:@"2"]) {
             [self.sportTypeImgView setImage:[UIImage imageNamed:@"typeIcon1"]];
         }
-        else{
+        else if ([[LVTools mToString: model.type] isEqualToString:@"1"]){
             [self.sportTypeImgView setImage:[UIImage imageNamed:@"typeIcon"]];
+        }
+        else{
+            [self.sportTypeImgView setImage:[UIImage imageNamed:@"typeIcon2"]];
         }
     if ([[LVTools mToString:model.signUpStatus] isEqualToString:@"0"]) {
         self.statusLb.selected = NO;
