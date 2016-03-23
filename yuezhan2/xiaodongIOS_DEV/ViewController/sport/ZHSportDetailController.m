@@ -516,7 +516,7 @@
             cell = [[BigImgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"bigimgcell"];
         }
         cell.line.hidden = YES;
-        [cell.sportImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,_matchInfo.matchShow]] placeholderImage:[UIImage imageNamed:@""]];
+        [cell.sportImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",preUrl,_matchInfo.matchShow]] placeholderImage:[UIImage imageNamed:@"match_plo"]];
         CGFloat width = [matchShowInfo[@"width"] floatValue];
         CGFloat height = [matchShowInfo[@"height"] floatValue];
         cell.sportImg.height = height/width*(BOUNDS.size.width-2*mygap);
@@ -1083,6 +1083,9 @@
     }
     else{
     if(btn.selected){
+        if ([[LVTools mToString: self.matchInfo.signupWay] isEqualToString:@"2"]) {
+            return;
+        }
         //已报名
         SportResultController *sportDVC =[[SportResultController alloc] init];
         sportDVC.title = @"我的报名详情";
@@ -1100,6 +1103,9 @@
             PersonSignController *personVC =[[PersonSignController alloc] init];
             personVC.title = @"个人报名";
             personVC.matchInfo = self.matchInfo;
+            personVC.chuanBlock = ^(NSArray *arr){
+                [self loadMatchData];
+            };
             [self.navigationController pushViewController:personVC animated:YES];
         }
         else{
