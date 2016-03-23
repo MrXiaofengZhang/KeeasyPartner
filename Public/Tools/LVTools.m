@@ -108,7 +108,7 @@
 //    
 //    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&parseError];
 //    NSString * string = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//    NSLog(@"jsonstr ==== %@",string);
+    NSLog(@"jsonstr ==== %@",string);
    NSString *resultstring = [LVTools mToString:[Utility encryptUseDES:string]];
     
     return resultstring;
