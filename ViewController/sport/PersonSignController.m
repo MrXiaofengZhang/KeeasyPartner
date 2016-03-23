@@ -105,7 +105,7 @@
     }
     
     [self showHudInView:self.view hint:LoadingWord];
-    [DataService requestWeixinAPI:MatchSignUpInfo parsms:@{@"param":[LVTools configDicToDES:dic]} method:@"post" completion:^(id result) {
+    [DataService requestWeixinAPI:singleSignUp parsms:@{@"param":[LVTools configDicToDES:dic]} method:@"post" completion:^(id result) {
         [self hideHud];
         NSLog(@"%@",result);
         if ([result[@"status"] boolValue]) {
@@ -118,7 +118,12 @@
             } cancelButtonTitle:@"我知道了" otherButtonTitles: nil];
         }
         else{
+            if (result[@"info"]) {
+                [self showHint:result[@"info"]];
+            }
+            else{
             [self showHint:ErrorWord];
+            }
         }
     }];
 }
