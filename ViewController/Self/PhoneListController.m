@@ -646,7 +646,7 @@
 - (void)addFriend:(UIButton*)btn{
     if (btn.selected==NO) {
         
-    
+        btn.selected = YES;
     ChineseString *userInfo = [[self.sortedArrForArrays objectAtIndex:btn.tag/1000] objectAtIndex:btn.tag%1000];
     NSLog(@"%@-%@",userInfo.string,userInfo.tel);
     if (userInfo.tel.length==11&&[LVTools isValidateMobile:userInfo.tel]) {
@@ -690,7 +690,10 @@
         [self hideHud];
         NSLog(@"------%@",result);
         if ([result[@"status"] boolValue]) {
-         [_tableView reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
+//         [_tableView reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
+        }
+        else{
+//            [self showHint:ErrorWord];
         }
     }];
 }
