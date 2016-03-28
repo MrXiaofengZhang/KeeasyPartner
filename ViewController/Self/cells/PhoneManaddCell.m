@@ -17,6 +17,7 @@
 }
 - (void)layoutSubviews{
     [super layoutSubviews];
+    self.imageView.frame = CGRectMake(mygap*2, 7.0, 40.0, 40.0);
     self.imageView.layer.masksToBounds = YES;
     self.imageView.layer.cornerRadius = self.imageView.width/2.0;
 }
