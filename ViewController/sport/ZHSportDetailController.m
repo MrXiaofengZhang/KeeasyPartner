@@ -279,7 +279,7 @@
     }];
 }
 - (void)shareOnclick{
-    [LVShareManager shareText:[NSString stringWithFormat:@"点击下载校动官方App－加入到%@",self.matchInfo.name] Targert:self];
+    [LVShareManager shareText:[NSString stringWithFormat:@"Hi小伴儿~我来喊你围观：%@，太有意思了，快来我们一起扯皮~校动",self.matchInfo.name] Targert:self];
     
 }
 #pragma mark UMengShare
@@ -1104,7 +1104,7 @@
             personVC.title = @"个人报名";
             personVC.matchInfo = self.matchInfo;
             personVC.chuanBlock = ^(NSArray *arr){
-                [self loadMatchData];
+                b.selected = YES;
             };
             [self.navigationController pushViewController:personVC animated:YES];
         }
