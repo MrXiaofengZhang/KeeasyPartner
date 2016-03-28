@@ -364,19 +364,19 @@
     //设置分享内容
     NSString *shareText=@"";
     UIImage *shareImage = [UIImage imageNamed:@"appImg"];
-    shareText = [NSString stringWithFormat:@"快来参加比赛－%@",[LVTools mToString:self.nameStr]];
+    shareText = [NSString stringWithFormat:@"Hi小伴儿~我在校动中报名参赛了，%@，现在我队缺你，快点击同意~校动",[LVTools mToString:self.nameStr]];
     if ([self.type isEqualToString:@"0"]) {
         shareText = [NSString stringWithFormat:@"快来参加约战－%@",[LVTools mToString:self.nameStr]];
     }
     if([self.type isEqualToString:@"1"]){
-        shareText = [NSString stringWithFormat:@"点击下载校动官方APP—加入到%@的队伍%@中来吧!",[kUserDefault objectForKey:kUserName],[LVTools mToString:self.nameStr]];
+        shareText = [NSString stringWithFormat:@"Hi小伴儿~我在校动中组建球队%@，快来加入我的球队一起玩耍吧~校动",[LVTools mToString:self.nameStr]];
     }
     if([self.type isEqualToString:@"2"]){
-        shareText = [NSString stringWithFormat:@"点击下载校动官方APP—加入到%@的队伍%@中来吧!",[kUserDefault objectForKey:kUserName],[LVTools mToString:self.nameStr]];;
+        shareText = [NSString stringWithFormat:@"Hi小伴儿~我在校动中组建球队%@，快来加入我的球队一起玩耍吧~校动",[LVTools mToString:self.nameStr]];;
     }
 
     if (_type == nil) {
-        shareText = [NSString stringWithFormat:@"我在玩这个app,一起来吧,点击查看详情%@",kDownLoadUrl];
+        shareText = [NSString stringWithFormat:@"Hi小伴儿~我在玩一款好玩的校园赛事app-校动，快来加我好友和我一起动起来吧~校动"];
     }
     else{
         shareText = [NSString stringWithFormat:@"%@,点击查看详情%@",shareText,kDownLoadUrl];
