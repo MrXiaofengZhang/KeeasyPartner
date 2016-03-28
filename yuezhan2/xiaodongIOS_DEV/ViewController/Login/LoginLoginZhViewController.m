@@ -66,6 +66,7 @@
         }
         else{
             textField.text = [kUserDefault objectForKey:KUserAcount];
+            textField.keyboardType = UIKeyboardTypeNumberPad;
         }
         textField.placeholder=[stringArray objectAtIndex:i];
         
