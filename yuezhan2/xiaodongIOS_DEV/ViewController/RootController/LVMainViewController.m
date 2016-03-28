@@ -65,7 +65,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentView:) name:@"PresentView" object:nil];
     //[self setMessageCount];
     if ([[kUserDefault objectForKey:kToken] length]==32) {
+        if ([[kUserDefault objectForKey:kUserLogin] isEqualToString:@"1"]) {
         [self getmessageNum];
+        }
     }
 }
 - (void)showMyCount{
