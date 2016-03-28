@@ -130,11 +130,12 @@ static HcCustomKeyboard *customKeyboard = nil;
     
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [self.mTextView resignFirstResponder];
-    return YES;
-}
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    [self.mTextView resignFirstResponder];
+//    return YES;
+//}
+#pragma mark UITextViewDelegate
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     if (self.wpcBackView) {
@@ -144,7 +145,30 @@ static HcCustomKeyboard *customKeyboard = nil;
     self.mTextView.text = nil;
     return YES;
 }
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView{
+    return YES;
+}
 
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    
+}
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([text isEqualToString:@"\n"]) {
+        //点return键完成
+        [self forTalk];
+    }
+    return YES;
+}
+- (void)textViewDidChange:(UITextView *)textView{
+   
+}
+- (void)textViewDidChangeSelection:(UITextView *)textView{
+    
+}
 -(void)forTalk //评论按钮
 {
     if (self.isTop == NO)
@@ -266,7 +290,7 @@ static HcCustomKeyboard *customKeyboard = nil;
     } completion:^(BOOL finished) {
         [self.mHiddeView removeFromSuperview];
         self.mHiddeView =nil;
-        self.mTextView.text =@"我来说两句..."; //键盘消失时，恢复TextView内容
+//        self.mTextView.text =@"我来说两句..."; //键盘消失时，恢复TextView内容
     }];
 }
 - (void)textDidChanged:(NSNotification *)notif //监听文字改变 换行时要更改输入框的位置
