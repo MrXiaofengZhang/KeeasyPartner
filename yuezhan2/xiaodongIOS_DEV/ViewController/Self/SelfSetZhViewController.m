@@ -211,7 +211,7 @@
         [alertView show];
     }
     if (indexPath.row == 2) {
-        [LVShareManager shareText:[NSString stringWithFormat:@"点击下载校动官方App-交球友，一起愉快的play吧%@",kDownLoadUrl] Targert:self];
+        [LVShareManager shareText:[NSString stringWithFormat:@"Hi小伴儿~分享你一款充满正能量校园赛事平台的app-校动，只有和我关系好的人才能看到，我们一起动起来吧~校动"] Targert:self];
     }
     if (indexPath.row == 1000) {
 //        SelfRespectZhViewController *respect=[[SelfRespectZhViewController alloc]init];
