@@ -595,9 +595,12 @@
                             cell.addBtn.enabled = YES;
                         }
                     }
+                    else{
+                        cell.addBtn.enabled = YES;
+                    }
                 }
             } else {
-                
+                cell.addBtn.enabled = YES;
                 NSLog(@"arr out of range");
             }
             
