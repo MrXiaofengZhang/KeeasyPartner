@@ -92,7 +92,6 @@
                 [LVTools mSetLocalData:[NSKeyedArchiver archivedDataWithRootObject:model] Key:[NSString stringWithFormat:@"xd%@", [LVTools mToString: model.userId]]];
             }
             if ([resultDic[@"friendList"] count]==0) {
-                [self showHint:EmptyList];
             }
             if (self.NearByArray.count==0) {
                 self.tableView.hidden = YES;
