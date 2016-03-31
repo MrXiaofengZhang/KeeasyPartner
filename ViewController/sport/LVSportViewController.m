@@ -485,7 +485,6 @@ static NSInteger page = 0;
             {
                 [self.ListDataArray removeAllObjects];
                 if ([resultDic[@"data"] count]==0) {
-                    [self showHint:EmptyList];
                 }
                 else{
                 for (NSDictionary * dic in resultDic[@"data"]) {
@@ -543,7 +542,6 @@ static NSInteger page = 0;
                         [_sportTableView reloadData];
                     }
                     else{
-                        [self showHint:EmptyList];
                         
                     }
                     if ([resultDic[@"moreData"] boolValue]) {
