@@ -279,7 +279,7 @@
         _countlab1.textAlignment = NSTextAlignmentCenter;
         _countlab1.hidden = YES;
     }
-    _countlab1.text = [NSString stringWithFormat:@"%ld",((LVSportViewController*)[((UINavigationController*)[self.navigationController.tabBarController.viewControllers objectAtIndex:0]).viewControllers objectAtIndex:0]).newPeopleCount];
+    _countlab1.text = [NSString stringWithFormat:@"%ld",(long)((LVSportViewController*)[((UINavigationController*)[self.navigationController.tabBarController.viewControllers objectAtIndex:0]).viewControllers objectAtIndex:0]).newPeopleCount];
     return _countlab1;
 }
 
