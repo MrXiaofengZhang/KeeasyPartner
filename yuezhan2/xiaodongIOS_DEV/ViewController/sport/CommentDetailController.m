@@ -16,14 +16,14 @@
 #import "GetMatchListModel.h"
 @interface CommentDetailController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,HcCustomKeyboardDelegate>{
     NSMutableArray *replyArray;
-    NSString *replyId;
-    NSString *replyName;
+    
     HcCustomKeyboard *textView;
     
 }
 @property (nonatomic,strong) UITableView *mTableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
 @property (nonatomic,strong) UIButton *enterDetailBtn;
+
 @end
 
 @implementation CommentDetailController
@@ -32,11 +32,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self navgationBarLeftReturn];
-    replyId = nil;
     //评论详情数据分两种情况获取
     if (self.commentDic) {
     replyArray = [[NSMutableArray alloc] initWithArray:_commentDic[@"replys"]];
     [self.view addSubview:self.mTableView];
+        [self replyOnClick];
     }
     else{
         [self loadData];
@@ -99,6 +99,7 @@
             _commentDic = [[NSMutableDictionary alloc] initWithDictionary:result[@"data"]];
             replyArray = [[NSMutableArray alloc] initWithArray:_commentDic[@"replys"]];
             [self.view addSubview:self.mTableView];
+            [self replyOnClick];
         } else {
             [self showHint:ErrorWord];
         }
@@ -126,8 +127,8 @@
         [self.navigationController presentViewController:loginNav animated:YES completion:nil];
     }
     else{
-    replyId = nil;
-    replyName = self.commentDic[@"userName"];
+    self.replyId = nil;
+    self.replyName = self.commentDic[@"userName"];
     [self replyOnClick];
     }
 }
@@ -142,7 +143,7 @@
     else{
         textView = [HcCustomKeyboard customKeyboard];
         [textView textViewShowView:self customKeyboardDelegate:self andState:YES];
-        textView.mTextView.placeholder = [NSString stringWithFormat:@"回复%@:",replyName];
+        textView.mTextView.placeholder = [NSString stringWithFormat:@"回复%@:",self.replyName];
     }
 }
 #pragma mark UITableViewDelegate
@@ -211,8 +212,8 @@
     if(indexPath.row!=0){
         //回复  回复
         NSDictionary *dic = replyArray[indexPath.row-1];
-        replyId = dic[@"id"];
-        replyName = dic[@"userName"];
+        self.replyId = dic[@"id"];
+        self.replyName = dic[@"userName"];
         [self replyOnClick];
     }
 }
@@ -246,7 +247,7 @@
     [dic setValue:_commentDic[@"matchId"] forKey:@"matchId"];
     [dic setValue:_commentDic[@"id"] forKey:@"topId"];
     [dic setValue:[kUserDefault valueForKey:kUserId] forKey:@"userId"];
-    [dic setValue:replyId forKey:@"parentId"];
+    [dic setValue:self.replyId forKey:@"parentId"];
     [dic setValue:@"3" forKey:@"type"];
     [dic setValue:commentStr forKey:@"message"];
     [dic setValue:@[] forKey:@"ids"];
@@ -289,7 +290,7 @@
 }
 #pragma UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (!buttonIndex== [actionSheet cancelButtonIndex]) {
+    if (buttonIndex== [actionSheet cancelButtonIndex]) {
         ZHJubaoController *jubaoVc= [[ZHJubaoController alloc] init];
         jubaoVc.reportId = [LVTools mToString:self.commentDic[@"createuser"]];
         jubaoVc.commenentId = self.commentDic[@"id"];
