@@ -737,9 +737,12 @@
     }
 }
 - (void)replyOnClick:(UIButton*)btn{
+    NSMutableDictionary *commentDic = [[NSMutableDictionary alloc] initWithDictionary:[commentsArray objectAtIndex:btn.tag-2*TileInitialTag-4]];
     CommentDetailController *vc= [[CommentDetailController alloc] init];
     vc.title = @"赛事评论";
-    vc.commentDic =[[NSMutableDictionary alloc] initWithDictionary:[commentsArray objectAtIndex:btn.tag-2*TileInitialTag-4]];
+    vc.replyName = commentDic[@"userName"];
+    vc.replyId = nil;
+    vc.commentDic = commentDic;
     vc.chuanBlock = ^(NSArray* arr){
         if (arr.count>0) {
             [commentsArray replaceObjectAtIndex:btn.tag-2*TileInitialTag-4 withObject:[arr lastObject]];
@@ -1048,7 +1051,12 @@
         else{
         CommentDetailController *vc= [[CommentDetailController alloc] init];
         vc.title = @"赛事评论";
+            
         vc.commentDic = [commentsArray objectAtIndex:indexPath.section-4];
+            NSDictionary *dic = vc.commentDic[@"replys"][indexPath.row-1];
+           vc.replyId = dic[@"id"];
+            vc.replyName = dic[@"userName"];
+
             vc.chuanBlock = ^(NSArray* arr){
                 [self loadMatchData];
             };
