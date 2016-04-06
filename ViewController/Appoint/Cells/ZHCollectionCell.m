@@ -34,7 +34,7 @@
     }
     self.nickNameLb.text = [LVTools mToString:dic.teamName];
     
-    if (!dic.isSelected==NO) {
+    if (dic.isSelected) {
         _rankImg.image = [UIImage imageNamed:@"selected"];
     }
     else{
