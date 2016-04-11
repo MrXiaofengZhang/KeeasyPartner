@@ -5100,7 +5100,7 @@
 						DevelopmentTeam = W7LMN7377R;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
