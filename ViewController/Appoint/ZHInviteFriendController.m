@@ -358,8 +358,8 @@
     return _teamCollectView;
 }
 - (void)otherFriend:(UIButton*)btn{
-    NSArray *nameArray=@[@"手机通讯录",@"微信好友",@"QQ好友",@"新浪微博",@"人人网",@"扫一扫"];
-    NSLog(@"%@",[nameArray objectAtIndex:btn.tag-100]);
+//    NSArray *nameArray=@[@"手机通讯录",@"微信好友",@"QQ好友",@"新浪微博",@"人人网",@"扫一扫"];
+//    NSLog(@"%@",[nameArray objectAtIndex:btn.tag-100]);
     
     //设置分享内容
     NSString *shareText=@"";
