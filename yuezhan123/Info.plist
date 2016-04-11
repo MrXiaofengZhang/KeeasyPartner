@@ -185,6 +185,10 @@
 	<string>是否允许"约战123"在后台一直使用您的位置？</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>是否允许"约战123"在使用期间使用您的位置？</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
