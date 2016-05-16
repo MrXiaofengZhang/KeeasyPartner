@@ -132,6 +132,7 @@ static NSInteger page = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
     //初始化信息
     cityInfo = @{@"id":@"0",@"city":@"全国"};
     self.view.backgroundColor = [UIColor whiteColor];
@@ -849,7 +850,15 @@ static NSInteger page = 0;
     [imageView addTarget:self action:@selector(imageOnClick:) forControlEvents:UIControlEventTouchUpInside];
     [_selectSc addSubview:imageView];
     _pageView.numberOfPages = banners.count;
+//    之前做过的一些项目中有这样的一种情况，我们当时是做一个秒杀活动，要求在页面中显示活动的倒计时，我是通过+scheduledTimerWithTimeInterval出发timer的方式做的，但是发现一个很奇怪的现象，就是当我滑动列表的时候，timer暂停了，页面中的倒计时停止了。
+//    
+//    　　后来通过深入研究NSTimer的运行原理，才发现NSTimer与RunLoop有关（其实RunLoop与线程是紧密相关的，这里就不做多说了），RunLoop只能运行在一种mode下，如果要换mode，当前的loop也需要停下重启成新的。利用这个机制，ScrollView滚动过程中NSDefaultRunLoopMode（kCFRunLoopDefaultMode）的mode会切换到UITrackingRunLoopMode来保证ScrollView的流畅滑动；只有在NSDefaultRunLoopMode模式下处理的事件会影响scrllView的滑动。
+//    
+//    　　如果我们把一个NSTimer对象以NSDefaultRunLoopMode（kCFRunLoopDefaultMode）添加到主运行循环中的时候, ScrollView滚动过程中会因为mode的切换，而导致NSTimer将不再被调度。
+//    
+//    　　但是因为mode还是可定制的，所以：Timer计时会被scrollView的滑动影响的问题可以通过将timer添加到NSRunLoopCommonModes（kCFRunLoopCommonModes）来解决。代码如下：
     timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(bannerAnimated) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 - (void)bannerAnimated{
     
